@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 1cbe1e988ccacee4cbab0ee23c4eb6c1
-timeCreated: 1447671314
+timeCreated: 1447680679
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -62,23 +62,23 @@ TextureImporter:
     - name: caverna_camada_fundo
       rect:
         serializedVersion: 2
-        x: 27
-        y: 2739
-        width: 2892
-        height: 2104
+        x: 88
+        y: 2780
+        width: 2810
+        height: 2045
       alignment: 0
       pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 37, y: 0, z: 29, w: 0}
     - name: caverna_camada_frente
       rect:
         serializedVersion: 2
-        x: 3239
+        x: 3280
         y: 2709
-        width: 2177
+        width: 2110
         height: 2090
       alignment: 0
       pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 0, y: 0, z: 32, w: 0}
     - name: obstaculo_0
       rect:
         serializedVersion: 2
@@ -124,31 +124,31 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 480
-        width: 3271
-        height: 2103
+        width: 3248
+        height: 2085
       alignment: 0
       pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 24, y: 31, z: 0, w: 0}
     - name: caverna_camada_meio
       rect:
         serializedVersion: 2
-        x: 3394
+        x: 3447
         y: 380
-        width: 2611
+        width: 2508
         height: 2103
       alignment: 0
       pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 29, y: 0, z: 10, w: 0}
     - name: caverna_chao_teto
       rect:
         serializedVersion: 2
-        x: 40
+        x: 70
         y: 0
-        width: 3028
+        width: 2998
         height: 238
       alignment: 0
       pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 35, y: 0, z: 51, w: 0}
   spritePackingTag: 
   userData: 
   assetBundleName: 

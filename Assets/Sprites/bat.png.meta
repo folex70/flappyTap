@@ -1,9 +1,39 @@
 fileFormatVersion: 2
 guid: a8e56ad7dea3e4f4aae5b5861c3d27e3
-timeCreated: 1447531310
+timeCreated: 1447671920
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: bat_0
+    21300002: bat_1
+    21300004: bat_2
+    21300006: bat_3
+    21300008: bat_4
+    21300010: bat_5
+    21300012: bat_6
+    21300014: bat_7
+    21300016: bat_8
+    21300018: bat_9
+    21300020: bat_10
+    21300022: bat_11
+    21300024: bat_12
+    21300026: bat_13
+    21300028: bat_14
+    21300030: bat_15
+    21300032: bat_16
+    21300034: bat_17
+    21300036: bat_18
+    21300038: bat_19
+    21300040: bat_20
+    21300042: bat_21
+    21300044: bat_22
+    21300046: bat_23
+    21300048: bat_24
+    21300050: bat_25
+    21300052: bat_26
+    21300054: bat_27
+    21300056: bat_28
+    21300058: bat_29
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -30,7 +60,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     filterMode: -1
-    aniso: -1
+    aniso: 16
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
@@ -38,7 +68,7 @@ TextureImporter:
   rGBM: 0
   compressionQuality: 50
   allowsAlphaSplitting: 0
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -49,7 +79,307 @@ TextureImporter:
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: bat_0
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 1027
+        width: 103
+        height: 120
+      alignment: 9
+      pivot: {x: .593912065, y: .113083906}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: bat_1
+      rect:
+        serializedVersion: 2
+        x: 358
+        y: 1052
+        width: 109
+        height: 84
+      alignment: 9
+      pivot: {x: .570993662, y: .200600758}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: bat_2
+      rect:
+        serializedVersion: 2
+        x: 590
+        y: 1020
+        width: 103
+        height: 122
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: bat_3
+      rect:
+        serializedVersion: 2
+        x: 806
+        y: 1046
+        width: 110
+        height: 84
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: bat_4
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 814
+        width: 118
+        height: 112
+      alignment: 9
+      pivot: {x: .647552609, y: .810914695}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: bat_5
+      rect:
+        serializedVersion: 2
+        x: 316
+        y: 864
+        width: 108
+        height: 105
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: bat_6
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 801
+        width: 74
+        height: 152
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: bat_7
+      rect:
+        serializedVersion: 2
+        x: 583
+        y: 809
+        width: 117
+        height: 112
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: bat_8
+      rect:
+        serializedVersion: 2
+        x: 765
+        y: 859
+        width: 108
+        height: 104
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: bat_9
+      rect:
+        serializedVersion: 2
+        x: 881
+        y: 795
+        width: 74
+        height: 153
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: bat_10
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 628
+        width: 103
+        height: 121
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: bat_11
+      rect:
+        serializedVersion: 2
+        x: 377
+        y: 654
+        width: 109
+        height: 84
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: bat_12
+      rect:
+        serializedVersion: 2
+        x: 595
+        y: 616
+        width: 103
+        height: 121
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: bat_13
+      rect:
+        serializedVersion: 2
+        x: 811
+        y: 641
+        width: 110
+        height: 85
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: bat_14
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 416
+        width: 118
+        height: 112
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: bat_15
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 466
+        width: 108
+        height: 105
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: bat_16
+      rect:
+        serializedVersion: 2
+        x: 454
+        y: 403
+        width: 73
+        height: 152
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: bat_17
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 404
+        width: 117
+        height: 112
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: bat_18
+      rect:
+        serializedVersion: 2
+        x: 770
+        y: 454
+        width: 108
+        height: 105
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: bat_19
+      rect:
+        serializedVersion: 2
+        x: 885
+        y: 391
+        width: 75
+        height: 152
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: bat_20
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 244
+        width: 103
+        height: 122
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: bat_21
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 270
+        width: 109
+        height: 84
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: bat_22
+      rect:
+        serializedVersion: 2
+        x: 586
+        y: 259
+        width: 102
+        height: 120
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: bat_23
+      rect:
+        serializedVersion: 2
+        x: 803
+        y: 284
+        width: 108
+        height: 84
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: bat_24
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 33
+        width: 118
+        height: 112
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: bat_25
+      rect:
+        serializedVersion: 2
+        x: 354
+        y: 83
+        width: 108
+        height: 104
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: bat_26
+      rect:
+        serializedVersion: 2
+        x: 470
+        y: 19
+        width: 74
+        height: 153
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: bat_27
+      rect:
+        serializedVersion: 2
+        x: 579
+        y: 47
+        width: 116
+        height: 111
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: bat_28
+      rect:
+        serializedVersion: 2
+        x: 760
+        y: 97
+        width: 108
+        height: 104
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: bat_29
+      rect:
+        serializedVersion: 2
+        x: 877
+        y: 33
+        width: 72
+        height: 152
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 
   assetBundleName: 
