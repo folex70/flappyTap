@@ -1,0 +1,155 @@
+fileFormatVersion: 2
+guid: 1cbe1e988ccacee4cbab0ee23c4eb6c1
+timeCreated: 1447680679
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: caverna_camada_fundo
+    21300002: caverna_camada_frente
+    21300004: obstaculo_0
+    21300006: obstaculo_1
+    21300008: obstaculo_2
+    21300010: obstaculo_3
+    21300012: fundo
+    21300014: caverna_camada_meio
+    21300016: caverna_chao_teto
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: caverna_camada_fundo
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 2780
+        width: 2810
+        height: 2045
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 37, y: 0, z: 29, w: 0}
+    - name: caverna_camada_frente
+      rect:
+        serializedVersion: 2
+        x: 3280
+        y: 2709
+        width: 2110
+        height: 2090
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 32, w: 0}
+    - name: obstaculo_0
+      rect:
+        serializedVersion: 2
+        x: 5633
+        y: 3942
+        width: 485
+        height: 825
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: obstaculo_1
+      rect:
+        serializedVersion: 2
+        x: 6189
+        y: 3619
+        width: 435
+        height: 1144
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: obstaculo_2
+      rect:
+        serializedVersion: 2
+        x: 5681
+        y: 3347
+        width: 197
+        height: 398
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: obstaculo_3
+      rect:
+        serializedVersion: 2
+        x: 6085
+        y: 2761
+        width: 482
+        height: 612
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: fundo
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 480
+        width: 3248
+        height: 2085
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 24, y: 31, z: 0, w: 0}
+    - name: caverna_camada_meio
+      rect:
+        serializedVersion: 2
+        x: 3447
+        y: 380
+        width: 2508
+        height: 2103
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 29, y: 0, z: 10, w: 0}
+    - name: caverna_chao_teto
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 0
+        width: 2998
+        height: 238
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 35, y: 0, z: 51, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
