@@ -8,7 +8,8 @@ public class ControleInput : MonoBehaviour {
 	private GameObject player;
 	private bool isEsquerda;
 	private Rigidbody2D playerBody;
-
+	private Player playerClass;
+	public Animator anim;
 
 	// Use this for initialization
 	void Start () {
@@ -16,30 +17,40 @@ public class ControleInput : MonoBehaviour {
 		player = GameObject.Find("player");
 		// Recupera rigidbody do player
 		playerBody = player.GetComponent<Rigidbody2D> ();
+
+		playerClass = player.GetComponent<Player>();
+
+		anim = player.GetComponent<Animator>();
 	}
 
 	
 	// Update is called once per frame
 	void Update () {
-		#if UNITY_EDITOR_WIN
-		// if unity editor
-		if (Input.GetMouseButtonDown(0))
-		{		
-			Vector3 wp = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-			Vector2 touchPos = new Vector2(wp.x, wp.y);
 
-			if(touchPos.x > playerBody.position.x)
-			{
-				direta_touch();
+		if(!playerClass.dead)
+		{
+		
+
+			#if UNITY_EDITOR_WIN
+			// if unity editor
+			if (Input.GetMouseButtonDown(0))
+			{		
+				Vector3 wp = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+				Vector2 touchPos = new Vector2(wp.x, wp.y);
+
+				if(touchPos.x > playerBody.position.x)
+				{
+					direta_touch();
+				}
+				else
+				{
+					esquerda_touch();
+				}
 			}
-			else
-			{
-				esquerda_touch();
-			}
+			#endif
+			player.transform.Translate (Vector2.right * velocidade * Time.deltaTime);
+				
 		}
-		#endif
-		player.transform.Translate (Vector2.right * velocidade * Time.deltaTime);
-
 	}
 
 	public void direta_touch()
@@ -63,8 +74,9 @@ public class ControleInput : MonoBehaviour {
 
 	private void flipPersonagem()
 	{
+		Debug.Log ("Flip" + isEsquerda);
 		isEsquerda = !isEsquerda;
-		player.transform.eulerAngles = new Vector2(0, isEsquerda ? 180 : 0);
+		player.transform.localRotation = Quaternion.Euler(0, isEsquerda ? 180 : 0, 0);
 	}
 
 	private void voa()
