@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class ControleInput : MonoBehaviour {
 	
 	public float velocidade;
+	public float forca = 250;
 	private GameObject player;
 	private bool isEsquerda;
 	private Rigidbody2D playerBody;
@@ -21,6 +22,8 @@ public class ControleInput : MonoBehaviour {
 		playerClass = player.GetComponent<Player>();
 
 		anim = player.GetComponent<Animator>();
+
+		playerBody.velocity =  (Vector2.right * velocidade);
 	}
 
 	
@@ -32,23 +35,11 @@ public class ControleInput : MonoBehaviour {
 		
 
 			#if UNITY_EDITOR_WIN
-			// if unity editor
-			if (Input.GetMouseButtonDown(0))
-			{		
-				Vector3 wp = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-				Vector2 touchPos = new Vector2(wp.x, wp.y);
-
-				if(touchPos.x > playerBody.position.x)
-				{
-					direta_touch();
-				}
-				else
-				{
-					esquerda_touch();
-				}
-			}
+			processaInputWindows();
 			#endif
-			player.transform.Translate (Vector2.right * velocidade * Time.deltaTime);
+			processaInputMobile();
+
+			//player.transform.Translate (Vector2.right * velocidade * Time.deltaTime);
 				
 		}
 	}
@@ -59,6 +50,7 @@ public class ControleInput : MonoBehaviour {
 		voa ();
 		if(isEsquerda)
 		{
+			playerBody.velocity =  (Vector2.right * velocidade);
 			flipPersonagem();
 		}
 	}
@@ -68,6 +60,7 @@ public class ControleInput : MonoBehaviour {
 		voa ();
 		if(!isEsquerda)
 		{
+			playerBody.velocity =  (Vector2.left * velocidade);
 			flipPersonagem();
 		}
 	}
@@ -81,6 +74,47 @@ public class ControleInput : MonoBehaviour {
 
 	private void voa()
 	{
-		playerBody.AddForce(new Vector2(0,300));
+		if (playerBody.velocity.y > 0) {
+			playerBody.velocity = new Vector2(playerBody.velocity.x, 0);
+		}
+		playerBody.AddForce(Vector2.up * forca);
+	}
+
+	private void processaInputWindows(){
+
+		// if unity editor
+		if (Input.GetMouseButtonDown(0))
+		{		
+			Vector3 wp = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+			Vector2 touchPos = new Vector2(wp.x, wp.y);
+			
+			if(touchPos.x > playerBody.position.x)
+			{
+				direta_touch();
+			}
+			else
+			{
+				esquerda_touch();
+			}
+		}
+	}
+
+	private void processaInputMobile(){
+		
+		// if unity editor
+		if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+		{		
+			Vector3 wp = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
+			Vector2 touchPos = new Vector2(wp.x, wp.y);
+			
+			if(touchPos.x > playerBody.position.x)
+			{
+				direta_touch();
+			}
+			else
+			{
+				esquerda_touch();
+			}
+		}
 	}
 }
