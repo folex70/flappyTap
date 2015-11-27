@@ -82,8 +82,7 @@ public class ControleInput : MonoBehaviour {
 
 	private void processaInputWindows(){
 
-		// if unity editor
-		if (Input.GetMouseButtonDown(0))
+		if (Input.GetMouseButtonDown(0))// verifica se mouse foi clicado
 		{		
 			Vector3 wp = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 			Vector2 touchPos = new Vector2(wp.x, wp.y);
