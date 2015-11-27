@@ -10,11 +10,14 @@ public class Camera2DFollow : MonoBehaviour {
 	public float lookAheadMoveThreshold = 0.1f;
 	public float yPosRestriction = -1;
 	public float xPosRestriction = -1;
+	public bool podeVoltar = false;
 	
 	float offsetZ;
 	Vector3 lastTargetPosition;
 	Vector3 currentVelocity;
 	Vector3 lookAheadPos;
+	float oldxMoveDelta = 0;
+	float xMoveDelta = 0;
 
 	float nextTimeToSearch = 0;
 	
@@ -33,8 +36,10 @@ public class Camera2DFollow : MonoBehaviour {
 			return;
 		}
 
+		oldxMoveDelta = xMoveDelta;
+
 		// only update lookahead pos if accelerating or changed direction
-		float xMoveDelta = (target.position - lastTargetPosition).x;
+		xMoveDelta = (target.position - lastTargetPosition).x;
 
 	    bool updateLookAheadTarget = Mathf.Abs(xMoveDelta) > lookAheadMoveThreshold;
 
@@ -48,8 +53,12 @@ public class Camera2DFollow : MonoBehaviour {
 		Vector3 newPos = Vector3.SmoothDamp(transform.position, aheadTargetPos, ref currentVelocity, damping);
 
 		float y = Mathf.Clamp (newPos.y, yPosRestriction, yPosRestriction);
-		float x = Mathf.Clamp (newPos.x, xPosRestriction, Mathf.Infinity);
-		newPos = new Vector3 (x, y , newPos.z);
+		if (!podeVoltar &&  newPos.x < oldxMoveDelta) {
+			newPos = new Vector3 (oldxMoveDelta, y , newPos.z);
+		} else {
+			float x = Mathf.Clamp (newPos.x, xPosRestriction, Mathf.Infinity);
+			newPos = new Vector3 (x, y , newPos.z);
+		}
 
 		transform.position = newPos;
 		

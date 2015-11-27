@@ -12,6 +12,7 @@ public class Player : MonoBehaviour {
     void Start () {
 		GameObject view = this.transform.Find("view").gameObject ;
 		anim = view.GetComponent<Animator>();
+
 	}
 	
 	// Update is called once per frame
@@ -34,6 +35,11 @@ public class Player : MonoBehaviour {
 			}
 		}
 	}
+
+	void OnBecameInvisible() {
+		GameOver ();
+	}
+	
 
 	public void takeDamage(int damage)	{
 		if (CurrentLife < 2) {

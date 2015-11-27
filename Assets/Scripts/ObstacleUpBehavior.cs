@@ -13,7 +13,6 @@ public class ObstacleUpBehavior : MonoBehaviour {
 	
 	void OnEnable()
 	{
-		GetComponent<Rigidbody2D>().velocity =velocity;
 		valorXTeto = GameObject.FindWithTag("spawn_up").transform.position.x;
 		valorYTeto = GameObject.FindWithTag("spawn_up").transform.position.y;
 		valorY = valorYTeto - range * Random.Range (0.1f, 0.4f);
@@ -23,8 +22,11 @@ public class ObstacleUpBehavior : MonoBehaviour {
 		                                  valorY,
 		                                  transform.position.z);
 		
-		Invoke ("Destroy", 7f);
-		
+	}
+
+	void OnBecameInvisible()
+	{
+		Destroy ();
 	}
 	
 	void Destroy()

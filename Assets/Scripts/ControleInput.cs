@@ -2,28 +2,43 @@
 using System.Collections;
 using System.Collections.Generic;
 
+
 public class ControleInput : MonoBehaviour {
 	
 	public float velocidade;
 	public float forca = 250;
+	public float offSet = 0.2f;
+	private bool isInCantoEsquerdo;
+	private bool isInCantoDireito;
 	private GameObject player;
 	private bool isEsquerda;
 	private Rigidbody2D playerBody;
 	private Player playerClass;
+	private Rigidbody2D cameraBody;
+	private float horzExtent;
+	private float offSetEsquerda = 0;
+	private Bounds playerBounds;
 	public Animator anim;
 
 	// Use this for initialization
 	void Start () {
 		//camera = GetComponent.<Camera>;
 		player = GameObject.Find("player");
+
+		cameraBody = Camera.main.GetComponent<Rigidbody2D>();
 		// Recupera rigidbody do player
 		playerBody = player.GetComponent<Rigidbody2D> ();
+
+		playerBounds = player.GetComponent<BoxCollider2D>().bounds;
 
 		playerClass = player.GetComponent<Player>();
 
 		anim = player.GetComponent<Animator>();
 
-		playerBody.velocity =  (Vector2.right * velocidade);
+		horzExtent = Camera.main.orthographicSize * Screen.width / Screen.height;
+
+		playerBody.velocity =  calculaVelocidadeDireita();
+
 	}
 
 	
@@ -32,7 +47,35 @@ public class ControleInput : MonoBehaviour {
 
 		if(!playerClass.dead)
 		{
-		
+
+			if(offSetEsquerda == 0)
+			{
+				offSetEsquerda = horzExtent;
+			}
+
+			if((transform.position.x - offSetEsquerda + offSet) > (player.transform.position.x))
+			{
+				isInCantoEsquerdo = true;
+				playerBody.velocity = new Vector2(cameraBody.velocity.x, playerBody.velocity.y) ;
+			}
+			else
+			{
+				isInCantoEsquerdo = false;
+			}
+
+			if((transform.position.x + offSetEsquerda - offSet) < (player.transform.position.x))
+			{
+				isInCantoDireito = true;
+				playerBody.velocity = new Vector2(cameraBody.velocity.x, playerBody.velocity.y) ;
+			}
+			else
+			{
+				isInCantoDireito = false;
+			}
+
+
+			Debug.Log(isInCantoEsquerdo);
+
 
 			#if UNITY_EDITOR_WIN
 			processaInputWindows();
@@ -50,19 +93,37 @@ public class ControleInput : MonoBehaviour {
 		voa ();
 		if(isEsquerda)
 		{
-			playerBody.velocity =  (Vector2.right * velocidade);
 			flipPersonagem();
+		}
+		if (isInCantoDireito) 
+		{
+			return;
+		}
+		if(playerBody.velocity.x < calculaVelocidadeDireita().x)
+		{
+			playerBody.velocity =  calculaVelocidadeDireita();
 		}
 	}
 
 	public void esquerda_touch(){
 		Debug.Log("apertou pra tras");
 		voa ();
+
 		if(!isEsquerda)
 		{
-			playerBody.velocity =  (Vector2.left * velocidade);
 			flipPersonagem();
 		}
+
+		if (isInCantoEsquerdo) 
+		{
+			return;
+		}
+
+		if(playerBody.velocity.x > (calculaVelocidadeEsquerda()).x)
+		{
+			playerBody.velocity =  calculaVelocidadeEsquerda();
+		}
+
 	}
 
 	private void flipPersonagem()
@@ -87,7 +148,7 @@ public class ControleInput : MonoBehaviour {
 			Vector3 wp = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 			Vector2 touchPos = new Vector2(wp.x, wp.y);
 			
-			if(touchPos.x > playerBody.position.x)
+			if(touchPos.x > transform.position.x)
 			{
 				direta_touch();
 			}
@@ -115,5 +176,15 @@ public class ControleInput : MonoBehaviour {
 				esquerda_touch();
 			}
 		}
+	}
+
+	public Vector2 calculaVelocidadeDireita()
+	{
+		return ((Vector2.right * velocidade) + cameraBody.velocity);
+	}
+
+	public Vector2 calculaVelocidadeEsquerda()
+	{
+		return (Vector2.left * velocidade);
 	}
 }
