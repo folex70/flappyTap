@@ -9,9 +9,12 @@ public class spawn : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		InvokeRepeating ("GeraObstaculo", 1f, 1.5f);
-
-	}
+		//InvokeRepeating ("GeraObstaculo", 1f, 1.5f);
+		
+		//gera obstaculos
+		InvokeRepeating("SpawnObstacles",1f, 1f);
+        InvokeRepeating("SpawnObstaclesBottom", 1.5f, 1.5f);
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -36,10 +39,30 @@ public class spawn : MonoBehaviour {
 		score++;
 	}
 
+	void SpawnObstacles()
+	{
+		//Instantiate (obstaculo_prefab);
+		GameObject obj = ObjectPool.current.GetPooledObject ();
 
+		if(obj == null) return;
+		
+		obj.transform.position = transform.position;
+		obj.transform.rotation = transform.rotation;
+		obj.SetActive (true);
+	}
 
+    
+    void SpawnObstaclesBottom()
+    {
+        //Instantiate (obstaculo_prefab);
+        GameObject obj = ObjectPoolBottom.current.GetPooledObject();
 
+        if (obj == null) return;
 
+        obj.transform.position = transform.position;
+        obj.transform.rotation = transform.rotation;
+        obj.SetActive(true);
+    }
 
 
 }
