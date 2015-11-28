@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour {
 
@@ -7,13 +8,17 @@ public class Player : MonoBehaviour {
     public int MaxLife = 4;
 	public bool dead = false;
 	public Animator anim;
+    //score
+    public int score;
+    public Text textScore;
 
     // Use this for initialization
     void Start () {
 		GameObject view = this.transform.Find("view").gameObject ;
 		anim = view.GetComponent<Animator>();
-
-	}
+        //invokerepeating nao aceita metodos com parametros
+        InvokeRepeating("setScore", 1, 1);
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -55,4 +60,15 @@ public class Player : MonoBehaviour {
 	void GameOver(){
 		Application.LoadLevel (Application.loadedLevel);
 	}
+
+    void setScore()
+    {
+        score = score + 10;
+        textScore.text = " "+score.ToString("0000000000"); ;
+    }
+
+    public int getScore()
+    {
+        return score;
+    }
 }
