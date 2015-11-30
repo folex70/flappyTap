@@ -8,7 +8,7 @@ public class Player : MonoBehaviour {
     public int MaxLife = 4;
 	public bool dead = false;
 	public Animator anim;
-    //score
+    //score foi transferido para classe manager.cs
     public int score;
     public Text textScore;
 
@@ -17,14 +17,15 @@ public class Player : MonoBehaviour {
 		GameObject view = this.transform.Find("view").gameObject ;
 		anim = view.GetComponent<Animator>();
         //invokerepeating nao aceita metodos com parametros
-        InvokeRepeating("setScore", 1, 1);
+        // InvokeRepeating("setScore", 1, 1);
+        InvokeRepeating("setScoreLocal", 1, 1);
     }
 	
 	// Update is called once per frame
 	void Update () {
-	
 
-	}
+
+    }
 
 	void OnCollisionEnter2D(Collision2D coll) 
 	{
@@ -61,14 +62,12 @@ public class Player : MonoBehaviour {
 		Application.LoadLevel (Application.loadedLevel);
 	}
 
-    void setScore()
+    public void setScoreLocal()
     {
-        score = score + 10;
-        textScore.text = " "+score.ToString("0000000000"); ;
+        //agora acessa a classe manager para alterar o score
+        Manager.instance.SetScore(10);
+        score = Manager.instance.GetScore();
+        textScore.text = " " + score.ToString("0000000000");
     }
 
-    public int getScore()
-    {
-        return score;
-    }
 }
