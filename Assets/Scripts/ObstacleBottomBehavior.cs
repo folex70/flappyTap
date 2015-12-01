@@ -16,7 +16,7 @@ public class ObstacleBottomBehavior : MonoBehaviour {
         valorXBottom = GameObject.FindWithTag("spawn_bottom").transform.position.x;
         valorYBottom = GameObject.FindWithTag("spawn_bottom").transform.position.y;
 		valorY = valorYBottom - range * Random.Range (0.1f, 0.4f);
-		valorX = valorYBottom - range * Random.Range (0.1f, 0.4f);
+		valorX = valorXBottom - range * Random.Range (0.1f, 0.4f);
 		
 		
 		transform.position = new Vector3 ( valorX,

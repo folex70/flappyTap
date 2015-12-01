@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour {
 
@@ -7,19 +8,24 @@ public class Player : MonoBehaviour {
     public int MaxLife = 4;
 	public bool dead = false;
 	public Animator anim;
+    //score foi transferido para classe manager.cs
+    public int score;
+    public Text textScore;
 
     // Use this for initialization
     void Start () {
 		GameObject view = this.transform.Find("view").gameObject ;
 		anim = view.GetComponent<Animator>();
-
-	}
+        //invokerepeating nao aceita metodos com parametros
+        // InvokeRepeating("setScore", 1, 1);
+        InvokeRepeating("setScoreLocal", 1, 1);
+    }
 	
 	// Update is called once per frame
 	void Update () {
-	
 
-	}
+
+    }
 
 	void OnCollisionEnter2D(Collision2D coll) 
 	{
@@ -55,4 +61,13 @@ public class Player : MonoBehaviour {
 	void GameOver(){
 		Application.LoadLevel (Application.loadedLevel);
 	}
+
+    public void setScoreLocal()
+    {
+        //agora acessa a classe manager para alterar o score
+        Manager.instance.SetScore(10);
+        score = Manager.instance.GetScore();
+        textScore.text = " " + score.ToString("0000000000");
+    }
+
 }
