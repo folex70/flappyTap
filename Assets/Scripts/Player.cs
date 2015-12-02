@@ -7,7 +7,9 @@ public class Player : MonoBehaviour {
     public int CurrentLife = 4;
     public int MaxLife = 4;
 	public bool dead = false;
-	public Animator anim;
+	public bool exibirMenu = false;
+	private Animator anim;
+	public GameObject coracaoPrefab;
     //score foi transferido para classe manager.cs
     public int score;
     public Text textScore;
@@ -55,11 +57,12 @@ public class Player : MonoBehaviour {
 		} else {
 			CurrentLife = CurrentLife - damage;
 			anim.Play("player_hit");
+			dropCoracao();
 		}
 	}
 
 	void GameOver(){
-		Application.LoadLevel (Application.loadedLevel);
+		exibirMenu = true;
 	}
 
     public void setScoreLocal()
@@ -69,5 +72,10 @@ public class Player : MonoBehaviour {
         score = Manager.instance.GetScore();
         textScore.text = " " + score.ToString("0000000000");
     }
+
+	void dropCoracao()
+	{
+		Instantiate (coracaoPrefab, transform.position, transform.rotation);
+	}
 
 }
