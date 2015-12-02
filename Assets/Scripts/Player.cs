@@ -44,6 +44,13 @@ public class Player : MonoBehaviour {
 		}
 	}
 
+	void OnTriggerEnter2D(Collider2D coll)  {
+		if (coll.gameObject.tag == "colectble") {
+			coll.gameObject.SetActive(false);
+			setScoreLocal(100);
+		}
+	}
+
 	void OnBecameInvisible() {
 		GameOver ();
 	}
@@ -72,6 +79,14 @@ public class Player : MonoBehaviour {
         score = Manager.instance.GetScore();
         textScore.text = " " + score.ToString("0000000000");
     }
+
+	public void setScoreLocal(int score)
+	{
+		//agora acessa a classe manager para alterar o score
+		Manager.instance.SetScore(score);
+		score = Manager.instance.GetScore();
+		textScore.text = " " + score.ToString("0000000000");
+	}
 
 	void dropCoracao()
 	{
