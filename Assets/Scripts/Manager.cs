@@ -4,6 +4,7 @@ using System.Collections;
 public class Manager : MonoBehaviour {
 
     private int _currentScore;
+	private int _maxScore;
 
     public static Manager instance;
 
@@ -21,5 +22,15 @@ public class Manager : MonoBehaviour {
     {
         return _currentScore;
     }
+
+	public void SetHiScore(int num)
+	{
+		_maxScore = num;
+	}
+	
+	public int GetHiScore()
+	{
+		return _maxScore;
+	}
    
 }

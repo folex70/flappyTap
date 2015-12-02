@@ -95,8 +95,8 @@ public class spawn : MonoBehaviour {
             level++;
             CancelInvoke();
 			InvokeRepeating ("SpawnBugs",5f, 5f);
-            InvokeRepeating("SpawnObstacles", 3f, 3f);
-            InvokeRepeating("SpawnObstaclesBottom", 3.5f, 3.5f);
+            InvokeRepeating("SpawnObstacles", 2f, 2f);
+            InvokeRepeating("SpawnObstaclesBottom", 2.5f, 2.5f);
         }
         else if ((level >= 10) && score > (150 * level))
         {
