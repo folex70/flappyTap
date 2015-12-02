@@ -4,8 +4,7 @@ using UnityEngine.UI;
 
 public class spawn : MonoBehaviour {
 
-	public GameObject obstaculos_prefabs;
-	public GameObject obstaculos2_prefabs;
+
 	int score = 0;
     int level = 0;
     public Text textLevel;
@@ -16,8 +15,9 @@ public class spawn : MonoBehaviour {
         //InvokeRepeating ("GeraObstaculo", 1f, 1.5f);
         
 		//gera obstaculos
-		InvokeRepeating("SpawnObstacles",5f, 5f);
-        InvokeRepeating("SpawnObstaclesBottom", 5.5f, 5.5f);
+		InvokeRepeating ("SpawnBugs",5f, 5f);
+		InvokeRepeating ("SpawnObstacles",5f, 5f);
+        InvokeRepeating ("SpawnObstaclesBottom", 5.5f, 5.5f);
     }
 	
 	// Update is called once per frame
@@ -70,6 +70,18 @@ public class spawn : MonoBehaviour {
         obj.SetActive(true);
     }
 
+	void SpawnBugs()
+	{
+		GameObject obj = ObjectPoolColectbles.current.GetPooledObject ();
+
+		Debug.Log ("Objeto");
+		if (obj != null) {
+			obj.transform.position = transform.position;
+			obj.transform.rotation = transform.rotation;
+			obj.SetActive (true);
+		}
+	}
+
 
     void LevelUp()
     {
@@ -82,6 +94,7 @@ public class spawn : MonoBehaviour {
         {
             level++;
             CancelInvoke();
+			InvokeRepeating ("SpawnBugs",5f, 5f);
             InvokeRepeating("SpawnObstacles", 3f, 3f);
             InvokeRepeating("SpawnObstaclesBottom", 3.5f, 3.5f);
         }
@@ -89,6 +102,7 @@ public class spawn : MonoBehaviour {
         {
             level++;
             CancelInvoke();
+			InvokeRepeating ("SpawnBugs",5f, 5f);
             InvokeRepeating("SpawnObstacles", 1f, 1f);
             InvokeRepeating("SpawnObstaclesBottom", 1.5f, 1.5f);
         }

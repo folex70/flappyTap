@@ -12,13 +12,31 @@ public class BugMovement : MonoBehaviour {
 	public Vector3 direcao;
 	private bool isEsquerda = false;
 	private bool isCima = false;
-	private Animator anim;
+
+	public Vector2 velocity = new Vector2(-5,0);
+	public float range = 10;
+	private float valorX = 0f;
+	private float valorY = 0f;
+	
+	
+	void OnEnable()
+	{
+		valorX = GameObject.FindWithTag("spawn_middle").transform.position.x;
+		valorY = GameObject.FindWithTag("spawn_middle").transform.position.y;
+		
+		
+		transform.position = new Vector3 (valorX,
+		                                  valorY,
+		                                  transform.position.z);
+	}
+
 	
 	void Start() {
+
 		ChangeRotationRandom();
 		ChangeDirectionRandom();
-		anim = GetComponent<Animator>();
 	}
+
 	void ChangeRotationRandom() {
 		if(Random.value > 0.5f)  {
 			ChangeRotation();
@@ -46,7 +64,6 @@ public class BugMovement : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D coll)  {
-		float x, y;
 		if (coll.gameObject.tag == "walls") {
 			CancelInvoke();
 			ChangeRotation();
@@ -61,4 +78,24 @@ public class BugMovement : MonoBehaviour {
 
 		transform.position += direcao;
 	} 
+
+	
+	void OnBecameInvisible()
+	{
+		Debug.Log ("Invisible");
+		Destroy ();
+	}
+	
+	void Destroy()
+	{
+		Debug.Log ("destroy");
+		gameObject.SetActive (false);
+		
+	}
+	
+	void OnDisable()
+	{
+		Debug.Log ("disable");
+		gameObject.SetActive (false);
+	}
 }
