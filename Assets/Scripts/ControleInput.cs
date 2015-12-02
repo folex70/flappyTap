@@ -74,9 +74,6 @@ public class ControleInput : MonoBehaviour {
 			}
 
 
-			Debug.Log(isInCantoEsquerdo);
-
-
 			#if UNITY_EDITOR_WIN
 			processaInputWindows();
 			#endif
@@ -89,7 +86,6 @@ public class ControleInput : MonoBehaviour {
 
 	public void direta_touch()
 	{
-		Debug.Log("apertou pra frente");
 		voa ();
 		if(isEsquerda)
 		{
@@ -106,7 +102,7 @@ public class ControleInput : MonoBehaviour {
 	}
 
 	public void esquerda_touch(){
-		Debug.Log("apertou pra tras");
+
 		voa ();
 
 		if(!isEsquerda)
@@ -128,7 +124,7 @@ public class ControleInput : MonoBehaviour {
 
 	private void flipPersonagem()
 	{
-		Debug.Log ("Flip" + isEsquerda);
+
 		isEsquerda = !isEsquerda;
 		player.transform.localRotation = Quaternion.Euler(0, isEsquerda ? 180 : 0, 0);
 	}

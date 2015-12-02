@@ -8,6 +8,14 @@ public class menu : MonoBehaviour {
 		Application.LoadLevel ("level_caverna_dark");
 	}
 
+	public void reloadLevel(){
+		Application.LoadLevel(Application.loadedLevel);
+	}
+
+	public void menuPrincipal () {
+		Application.LoadLevel ("menu");
+	}
+
 	public void exit()
 	{
 		Application.Quit ();
