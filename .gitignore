@@ -1,0 +1,5 @@
+*.log
+*.info
+Library/
+Temp/
+

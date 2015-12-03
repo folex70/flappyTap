@@ -17,6 +17,5 @@ public class HUD : MonoBehaviour {
     void Update()
     {
          LifeUI.sprite = LifeSprites[player.CurrentLife];
-         Debug.Log(player.CurrentLife);
     }
 }
