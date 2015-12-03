@@ -1,5 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
+
 
 public class Manager : MonoBehaviour {
 
@@ -10,7 +14,14 @@ public class Manager : MonoBehaviour {
 
     void Awake()
     {
-        instance = this;
+        if (instance == null) {
+			//DontDestroyOnLoad(gameObject);
+			instance = this;
+		} 
+		else if (instance != this) 
+		{
+			Destroy (gameObject);
+		}
     }
 
     public void SetScore(int num)
@@ -32,5 +43,37 @@ public class Manager : MonoBehaviour {
 	{
 		return _maxScore;
 	}
+
+	public void Save()
+	{
+		BinaryFormatter bf = new BinaryFormatter ();
+		FileStream file = File.Create (Application.persistentDataPath + "/playerInfo.dat");
+		PlayerData data = new PlayerData ();
+		data.maxScore = _maxScore;
+
+		bf.Serialize (file, data);
+		file.Close ();
+	}
+
+	public void Load()
+	{
+		if(File.Exists(Application.persistentDataPath + "/playerInfo.dat"))
+		{
+			BinaryFormatter bf = new BinaryFormatter ();
+			FileStream file = File.Open (Application.persistentDataPath + "/playerInfo.dat", FileMode.Open);
+			PlayerData data = (PlayerData)bf.Deserialize(file);
+			file.Close();
+
+			_maxScore = data.maxScore;
+
+		}
+	}
    
 }
+
+[Serializable]
+class PlayerData
+{
+	public int maxScore;
+}
+

@@ -20,6 +20,8 @@ public class ScenesMenu : MonoBehaviour {
 		componentesDeTela = GetComponentsInChildren(typeof(CanvasRenderer));
 
 		SetPanelVisivel (false);
+
+		Manager.instance.Load();
 	}
 	
 	// Update is called once per frame
