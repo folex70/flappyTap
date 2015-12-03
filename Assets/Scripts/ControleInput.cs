@@ -18,7 +18,6 @@ public class ControleInput : MonoBehaviour {
 	private float horzExtent;
 	private float offSetEsquerda = 0;
 	private Bounds playerBounds;
-	private Vector2 touchPos;
 	public Animator anim;
 
 	// Use this for initialization
@@ -143,7 +142,7 @@ public class ControleInput : MonoBehaviour {
 		if (Input.GetMouseButtonDown(0))// verifica se mouse foi clicado
 		{		
 			Vector3 wp = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-			touchPos = new Vector2(wp.x, wp.y);
+			Vector2 touchPos = new Vector2(wp.x, wp.y);
 			
 			if(touchPos.x > transform.position.x)
 			{
@@ -154,20 +153,6 @@ public class ControleInput : MonoBehaviour {
 				esquerda_touch();
 			}
 		}
-		if (Input.GetMouseButtonUp (0)) 
-		{
-			Vector3 wp = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-			Vector2 touchPosUp = new Vector2(wp.x, wp.y);
-			if(Vector2.Distance(touchPos,touchPosUp) > 4){
-				isEsquerda = ! (touchPos.x > touchPosUp.x);
-				flipPersonagem();
-				playerBody.velocity = isEsquerda ? calculaVelocidadeEsquerda() : calculaVelocidadeDireita();
-
-				Vector2 dir = touchPosUp - playerBody.position;
-				dir = dir.normalized;
-				playerBody.position = playerBody.position + dir * 2;
-			}
-		}
 	}
 
 	private void processaInputMobile(){
@@ -176,7 +161,7 @@ public class ControleInput : MonoBehaviour {
 		if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
 		{		
 			Vector3 wp = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
-			touchPos = new Vector2(wp.x, wp.y);
+			Vector2 touchPos = new Vector2(wp.x, wp.y);
 			
 			if(touchPos.x > playerBody.position.x)
 			{
@@ -186,23 +171,6 @@ public class ControleInput : MonoBehaviour {
 			{
 				esquerda_touch();
 			}
-		}
-		if (Input.touchCount > 0 && Input.GetTouch (0).phase == TouchPhase.Moved) 
-		{
-			Vector3 wp = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
-			Vector2 touchPosUp = new Vector2(wp.x, wp.y);
-
-			if(Vector2.Distance(touchPos, touchPosUp) > 4)
-				return;
-
-			isEsquerda = ! (touchPos.x > touchPosUp.x);
-			flipPersonagem();
-			playerBody.velocity = isEsquerda ? calculaVelocidadeEsquerda() : calculaVelocidadeDireita();
-			
-			Vector2 dir = touchPosUp - playerBody.position;
-			dir = dir.normalized;
-			playerBody.position = playerBody.position + dir * 2;
-
 		}
 	}
 

@@ -74,6 +74,7 @@ public class spawn : MonoBehaviour {
 	{
 		GameObject obj = ObjectPoolColectbles.current.GetPooledObject ();
 
+		Debug.Log ("Objeto");
 		if (obj != null) {
 			obj.transform.position = transform.position;
 			obj.transform.rotation = transform.rotation;

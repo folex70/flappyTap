@@ -57,13 +57,14 @@ public class Player : MonoBehaviour {
 	
 
 	public void takeDamage(int damage)	{
-		CurrentLife = CurrentLife - damage;
-		anim.Play("player_hit");
-		dropCoracao();
-
-		if (CurrentLife == 0) {
+		if (CurrentLife < 2) {
 			anim.Play("player_die");
+			CurrentLife = 0;
 			dead = true;
+		} else {
+			CurrentLife = CurrentLife - damage;
+			anim.Play("player_hit");
+			dropCoracao();
 		}
 	}
 
