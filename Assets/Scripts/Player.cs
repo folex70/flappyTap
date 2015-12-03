@@ -68,7 +68,9 @@ public class Player : MonoBehaviour {
 	}
 
 	void GameOver(){
+		CancelInvoke();
 		exibirMenu = true;
+
 	}
 
     public void setScoreLocal()
@@ -76,7 +78,8 @@ public class Player : MonoBehaviour {
         //agora acessa a classe manager para alterar o score
         Manager.instance.SetScore(10);
         score = Manager.instance.GetScore();
-        textScore.text = " " + score.ToString("0000000000");
+        textScore.text = "" + score.ToString("0000000000");
+		trySaveHiScore ();
     }
 
 	public void setScoreLocal(int score)
@@ -84,7 +87,17 @@ public class Player : MonoBehaviour {
 		//agora acessa a classe manager para alterar o score
 		Manager.instance.SetScore(score);
 		score = Manager.instance.GetScore();
-		textScore.text = " " + score.ToString("0000000000");
+		textScore.text = "" + score.ToString("0000000000");
+		trySaveHiScore ();
+	}
+
+	public void trySaveHiScore()
+	{
+		if (score > Manager.instance.GetHiScore ()) 
+		{
+			Manager.instance.SetHiScore(score);
+			Manager.instance.Save();
+		}
 	}
 
 	void dropCoracao()
