@@ -82,20 +82,18 @@ public class BugMovement : MonoBehaviour {
 	
 	void OnBecameInvisible()
 	{
-		Debug.Log ("Invisible");
 		Destroy ();
 	}
 	
 	void Destroy()
 	{
-		Debug.Log ("destroy");
+
 		gameObject.SetActive (false);
 		
 	}
 	
 	void OnDisable()
 	{
-		Debug.Log ("disable");
 		gameObject.SetActive (false);
 	}
 }
