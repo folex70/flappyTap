@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(AudioSource))]
 public class Player : MonoBehaviour {
 
     public int CurrentLife = 4;
@@ -13,6 +14,12 @@ public class Player : MonoBehaviour {
     //score foi transferido para classe manager.cs
     public int score;
     public Text textScore;
+    //audio
+    AudioSource audio;
+    public AudioClip AudioDamage;
+    public AudioClip AudioDie;
+    public AudioClip AudioCollectable;
+
 
     // Use this for initialization
     void Start () {
@@ -21,10 +28,12 @@ public class Player : MonoBehaviour {
         //invokerepeating nao aceita metodos com parametros
         // InvokeRepeating("setScore", 1, 1);
         InvokeRepeating("setScoreLocal", 1, 1);
+
+        audio = GetComponent<AudioSource>();
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update () {
 
 
     }
@@ -47,7 +56,8 @@ public class Player : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D coll)  {
 		if (coll.gameObject.tag == "colectble") {
 			coll.gameObject.SetActive(false);
-			setScoreLocal(100);
+            audio.PlayOneShot(AudioCollectable, 0.7F);
+            setScoreLocal(100);
 		}
 	}
 
@@ -59,17 +69,20 @@ public class Player : MonoBehaviour {
 	public void takeDamage(int damage)	{
 		CurrentLife = CurrentLife - damage;
 		anim.Play("player_hit");
-		dropCoracao();
+        audio.PlayOneShot(AudioDamage, 0.7F);
+        dropCoracao();
 
 		if (CurrentLife == 0) {
-			anim.Play("player_die");
+            audio.PlayOneShot(AudioDie, 0.7F);
+            anim.Play("player_die");
 			dead = true;
 		}
 	}
 
 	void GameOver(){
 		CancelInvoke();
-		exibirMenu = true;
+        
+        exibirMenu = true;
 
 	}
 

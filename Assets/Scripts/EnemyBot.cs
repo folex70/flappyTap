@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[RequireComponent(typeof(AudioSource))]
 public class EnemyBot : MonoBehaviour {
 
 
@@ -18,14 +19,20 @@ public class EnemyBot : MonoBehaviour {
 	private GameObject spawnerBottom;
 	//-------------
 	public float speed;
-	//-------------
-	void Start(){
+    //-------------
+    //audio
+    AudioSource audio;
+    public AudioClip AudioDamage;
+    public AudioClip AudioDie;
+    
+
+    void Start(){
 
 		enemy = GameObject.FindGameObjectWithTag("Enemy_bot");
 		spawnerBottom = GameObject.FindGameObjectWithTag("spawn_bottom");
 		enemyBody = enemy.GetComponent<Rigidbody2D> ();
-
-	}
+        audio = GetComponent<AudioSource>();
+    }
 
 	void FixedUpdate()
 	{
@@ -67,12 +74,14 @@ public class EnemyBot : MonoBehaviour {
 	{
 		CurrentLife = CurrentLife - damage;
 		anim.Play("Enemy_hit");
+        audio.PlayOneShot(AudioDamage, 0.7F);
 
-		dropCoracao();
+        dropCoracao();
 		
 		if (CurrentLife == 0) {
 			anim.Play("Enemy_die");
-			dead = true;
+            audio.PlayOneShot(AudioDie, 0.7F);
+            dead = true;
 		}
 	}
 
