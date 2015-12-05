@@ -3,39 +3,44 @@ using System.Collections;
 
 public class EnemyBot : MonoBehaviour {
 
-	//-------------
-	public float movementSpeedMax;
-	public float rotationTimeMax;
-	public float directionTimeMax;
-	public float rotationTimeMin;
-	public float directionTimeMin;
-	public Vector3 direcao;
-	private bool isEsquerda = false;
-	private bool isCima = false;
-	
-	public Vector2 velocity = new Vector2(-5,0);
-	public float range = 10;
-	private float valorX = 0f;
-	private float valorY = 0f;
-	//-------------
 
 	public int CurrentLife = 4;
 	public int MaxLife = 4;
 	public bool dead = false;
 	public Animator anim;
 	public GameObject coracaoPrefab;
+	public Vector3 direcao ;
+	public float force = 200;
+	//-------------
+	private GameObject enemy;
+	private Rigidbody2D enemyBody;
+	//-------------
+	private GameObject spawnerBottom;
+	//-------------
+	public float speed;
+	//-------------
+	void Start(){
 
-	// Use this for initialization
-	void Start () {
-		//direcao = new Vector3 (Vector2.right.x * movementSpeedMax * Time.deltaTime ,Vector2.up.y * movementSpeedMax * Time.deltaTime ,0);
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		//
-		transform.position += new Vector3(0.1f,0.15f,0f);
+		enemy = GameObject.FindGameObjectWithTag("Enemy_bot");
+		spawnerBottom = GameObject.FindGameObjectWithTag("spawn_bottom");
+		enemyBody = enemy.GetComponent<Rigidbody2D> ();
 
 	}
+
+	void FixedUpdate()
+	{
+		Vector2 enemyVel = enemyBody.velocity;
+		enemyVel.x = speed;
+		enemyBody.velocity = enemyVel;
+
+		if (enemyBody.position.y < spawnerBottom.transform.position.y) 
+		{
+			enemyBody.AddForce(Vector2.up * force);
+		}
+
+		enemyBody.rotation = 0f;
+	}
+
 
 	void OnCollisionEnter2D(Collision2D coll) 
 	{
@@ -43,7 +48,7 @@ public class EnemyBot : MonoBehaviour {
 		{
 			if(dead)
 			{
-				//Destroy();
+				enemy.SetActive(false);
 			}
 			else
 			{
@@ -52,6 +57,12 @@ public class EnemyBot : MonoBehaviour {
 		}
 	}
 
+	void OnTriggerEnter2D(Collider2D coll)  {
+		if (coll.gameObject.tag == "colectble") {
+			coll.gameObject.SetActive(false);
+		}
+	}
+	
 	public void takeDamage(int damage)	
 	{
 		CurrentLife = CurrentLife - damage;
