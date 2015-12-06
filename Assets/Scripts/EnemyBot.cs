@@ -43,8 +43,12 @@ public class EnemyBot : MonoBehaviour {
     public Transform pontoCastFinalBaixo;
     public bool hasCollisionInCastWithObstaculo = false;
     public bool hasCollisionInCastWithObstaculoBaixo = false;
-    public bool hasCollisionInCastWithPlayer = false;
-    public bool hasCollisionInCastWithLimiteCamera = false;
+    public bool hasCollisionInCastWithPlayerDir = false;
+    public bool hasCollisionInCastWithPlayerEsq = false;
+    public bool hasCollisionInCastWithPlayerCima = false;
+    public bool hasCollisionInCastWithPlayerBaixo = false;
+    public bool hasCollisionInCastWithLimiteCameraDir = false;
+    public bool hasCollisionInCastWithLimiteCameraEsq = false;
 
 
     void Start(){
@@ -71,7 +75,7 @@ public class EnemyBot : MonoBehaviour {
 		enemyBody.rotation = 0f;
 
         //Random dash
-        randomValue = Random.Range(0, 10);
+        randomValue = Random.Range(0, 50);
         randomValue2 = Random.Range(0, 500);
         if (randomValue2 == 5)
         {
@@ -91,13 +95,31 @@ public class EnemyBot : MonoBehaviour {
             {
                 enemyFly();
             }
-            if (hasCollisionInCastWithPlayer && randomValue == 5)
+
+            if (hasCollisionInCastWithPlayerDir && randomValue == 5)
             {
                 Dash(new Vector2(1, 0));
             }
-            if (hasCollisionInCastWithLimiteCamera)
+            if (hasCollisionInCastWithPlayerEsq && randomValue == 5)
             {
                 Dash(new Vector2(-1, 0));
+            }
+            if (hasCollisionInCastWithPlayerCima && randomValue == 5)
+            {
+                Dash(new Vector2(0, 1));
+            }
+            if (hasCollisionInCastWithPlayerBaixo && randomValue == 5)
+            {
+                Dash(new Vector2(0, -1));
+            }
+
+            if (hasCollisionInCastWithLimiteCameraDir)
+            {
+                Dash(new Vector2(-1, 0));
+            }
+            if (hasCollisionInCastWithLimiteCameraEsq)
+            {
+                Dash(new Vector2(1, 0));
             }
         }
         
@@ -117,8 +139,12 @@ public class EnemyBot : MonoBehaviour {
 
         hasCollisionInCastWithObstaculo = Physics2D.Linecast(pontoCastInicialDir.position, pontoCastFinalDir.position, 1 << LayerMask.NameToLayer("Obstaculo"));
         hasCollisionInCastWithObstaculoBaixo = Physics2D.Linecast(pontoCastInicialBaixo.position, pontoCastFinalBaixo.position, 1 << LayerMask.NameToLayer("Obstaculo"));
-        hasCollisionInCastWithPlayer = Physics2D.Linecast(pontoCastInicialDir.position, pontoCastFinalDir.position, 1 << LayerMask.NameToLayer("Player"));
-        hasCollisionInCastWithLimiteCamera = Physics2D.Linecast(pontoCastInicialDir.position, pontoCastFinalDir.position, 1 << LayerMask.NameToLayer("LimiteCamera"));
+        hasCollisionInCastWithPlayerDir = Physics2D.Linecast(pontoCastInicialDir.position, pontoCastFinalDir.position, 1 << LayerMask.NameToLayer("Player"));
+        hasCollisionInCastWithPlayerEsq = Physics2D.Linecast(pontoCastInicialEsq.position, pontoCastFinalEsq.position, 1 << LayerMask.NameToLayer("Player"));
+        hasCollisionInCastWithPlayerCima = Physics2D.Linecast(pontoCastInicialCima.position, pontoCastFinalCima.position, 1 << LayerMask.NameToLayer("Player"));
+        hasCollisionInCastWithPlayerBaixo = Physics2D.Linecast(pontoCastInicialBaixo.position, pontoCastFinalBaixo.position, 1 << LayerMask.NameToLayer("Player"));
+        hasCollisionInCastWithLimiteCameraDir = Physics2D.Linecast(pontoCastInicialDir.position, pontoCastFinalDir.position, 1 << LayerMask.NameToLayer("LimiteCameraDir"));
+        hasCollisionInCastWithLimiteCameraEsq = Physics2D.Linecast(pontoCastInicialEsq.position, pontoCastFinalEsq.position, 1 << LayerMask.NameToLayer("LimiteCameraEsq"));
     }
 
 
