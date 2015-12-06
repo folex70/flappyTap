@@ -30,6 +30,13 @@ public class EnemyBot : MonoBehaviour {
     //-------------
     public Vector2 direction;
     public int randomValue;
+    public int randomValue2;
+    //-----------------
+    //casting
+    public Transform pontoCastMeioInicial;
+    public Transform pontoCastMeioFinal;
+    public bool hasCollisionInCastWithObstaculo = false;
+    public bool hasCollisionInCastWithPlayer = false;
 
 
     void Start(){
@@ -56,8 +63,9 @@ public class EnemyBot : MonoBehaviour {
 		enemyBody.rotation = 0f;
 
         //Random dash
-        randomValue = Random.Range(0, 500);
-        if (randomValue == 5) {
+        randomValue = Random.Range(0, 10);
+        randomValue2 = Random.Range(0, 500);
+        if (randomValue2 == 5) {
             Dash(new Vector2 (Random.Range(-1f,1f), Random.Range(-1f, 1f)));
         }
         // Dash(new Vector2 (Random.Range(-1f,1f), Random.Range(-1f, 1f)));
@@ -66,6 +74,30 @@ public class EnemyBot : MonoBehaviour {
         //Dash(new Vector2(1, -1));
         //Dash(new Vector2(-1, 1));
 
+        RayCasting();
+
+
+        if (hasCollisionInCastWithObstaculo)
+        {
+            enemyFly();
+        }
+        if (hasCollisionInCastWithPlayer && randomValue == 5)
+        {
+            Dash(new Vector2(1, 0));
+        }
+    }
+
+    void RayCasting()
+    {
+        //RaycastHit2D hit;
+        Debug.DrawLine(pontoCastMeioInicial.position, pontoCastMeioFinal.position, Color.red);
+
+        //hasCollisionInCast = Physics2D.Linecast (pontoCastMeioInicial.position, pontoCastMeioFinal.position, 
+        //                                     1 << LayerMask.NameToLayer("bloco"));
+        //hit = Physics2D.Raycast(pontoCastMeioInicial.position, pontoCastMeioFinal.position);
+
+        hasCollisionInCastWithObstaculo = Physics2D.Linecast(pontoCastMeioInicial.position, pontoCastMeioFinal.position, 1 << LayerMask.NameToLayer("Obstaculo"));
+        hasCollisionInCastWithPlayer = Physics2D.Linecast(pontoCastMeioInicial.position, pontoCastMeioFinal.position, 1 << LayerMask.NameToLayer("Player"));
     }
 
 
