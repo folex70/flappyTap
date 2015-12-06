@@ -42,6 +42,7 @@ public class EnemyBot : MonoBehaviour {
     public Transform pontoCastInicialBaixo;
     public Transform pontoCastFinalBaixo;
     public bool hasCollisionInCastWithObstaculo = false;
+    public bool hasCollisionInCastWithObstaculoCima = false; 
     public bool hasCollisionInCastWithObstaculoBaixo = false;
     public bool hasCollisionInCastWithPlayerDir = false;
     public bool hasCollisionInCastWithPlayerEsq = false;
@@ -95,6 +96,11 @@ public class EnemyBot : MonoBehaviour {
             {
                 enemyFly();
             }
+            if (hasCollisionInCastWithObstaculoCima)
+            {
+                Dash(new Vector2(0, -1));
+                Dash(new Vector2(1, 0));
+            }
 
             if (hasCollisionInCastWithPlayerDir && randomValue == 5)
             {
@@ -138,6 +144,7 @@ public class EnemyBot : MonoBehaviour {
         //hit = Physics2D.Raycast(pontoCastMeioInicial.position, pontoCastMeioFinal.position);
 
         hasCollisionInCastWithObstaculo = Physics2D.Linecast(pontoCastInicialDir.position, pontoCastFinalDir.position, 1 << LayerMask.NameToLayer("Obstaculo"));
+        hasCollisionInCastWithObstaculoCima = Physics2D.Linecast(pontoCastInicialCima.position, pontoCastFinalCima.position, 1 << LayerMask.NameToLayer("Obstaculo"));
         hasCollisionInCastWithObstaculoBaixo = Physics2D.Linecast(pontoCastInicialBaixo.position, pontoCastFinalBaixo.position, 1 << LayerMask.NameToLayer("Obstaculo"));
         hasCollisionInCastWithPlayerDir = Physics2D.Linecast(pontoCastInicialDir.position, pontoCastFinalDir.position, 1 << LayerMask.NameToLayer("Player"));
         hasCollisionInCastWithPlayerEsq = Physics2D.Linecast(pontoCastInicialEsq.position, pontoCastFinalEsq.position, 1 << LayerMask.NameToLayer("Player"));

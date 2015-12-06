@@ -6,7 +6,7 @@ public class spawn : MonoBehaviour {
 
 
 	int score = 0;
-    int level = 0;
+    int localLevel = 0;
     public Text textLevel;
     
 
@@ -18,12 +18,16 @@ public class spawn : MonoBehaviour {
 		InvokeRepeating ("SpawnBugs",5f, 5f);
 		InvokeRepeating ("SpawnObstacles",5f, 5f);
         InvokeRepeating ("SpawnObstaclesBottom", 5.5f, 5.5f);
+
+        Manager.instance.SetLevel(localLevel);
     }
 	
 	// Update is called once per frame
 	void Update () {
         //Destroy (obstaculos_prefabs, 3f);
-        textLevel.text = "LEVEL "+ level;
+        localLevel = Manager.instance.GetLevel();
+        textLevel.text = "LEVEL "+ localLevel;
+        
         LevelUp();
     }
 
@@ -85,26 +89,27 @@ public class spawn : MonoBehaviour {
     void LevelUp()
     {
         int score = Manager.instance.GetScore();
-        if(level == 0 && score > 100)
+        if(localLevel == 0 && score > 100)
         {
-            level = 1;
+            localLevel = 1;
         }
-        else if ((level < 10) && score > (100 * level))
+        else if ((localLevel < 10) && score > (100 * localLevel))
         {
-            level++;
+            localLevel++;
             CancelInvoke();
 			InvokeRepeating ("SpawnBugs",5f, 5f);
             InvokeRepeating("SpawnObstacles", 2f, 2f);
             InvokeRepeating("SpawnObstaclesBottom", 2.5f, 2.5f);
         }
-        else if ((level >= 10) && score > (150 * level))
+        else if ((localLevel >= 10) && score > (150 * localLevel))
         {
-            level++;
+            localLevel++;
             CancelInvoke();
 			InvokeRepeating ("SpawnBugs",5f, 5f);
             InvokeRepeating("SpawnObstacles", 1f, 1f);
             InvokeRepeating("SpawnObstaclesBottom", 1.5f, 1.5f);
         }
+        Manager.instance.SetLevel(localLevel);
     }
 
 }
