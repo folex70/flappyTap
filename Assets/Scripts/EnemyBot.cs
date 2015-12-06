@@ -20,7 +20,7 @@ public class EnemyBot : MonoBehaviour {
     private GameObject player;
     private Rigidbody2D playerBody;
     //-------------
-    public float speed;
+    public float speed =3;
     //-------------
     //audio
     AudioSource audio;
@@ -33,10 +33,18 @@ public class EnemyBot : MonoBehaviour {
     public int randomValue2;
     //-----------------
     //casting
-    public Transform pontoCastMeioInicial;
-    public Transform pontoCastMeioFinal;
+    public Transform pontoCastInicialDir;
+    public Transform pontoCastFinalDir;
+    public Transform pontoCastInicialEsq;
+    public Transform pontoCastFinalEsq;
+    public Transform pontoCastInicialCima;
+    public Transform pontoCastFinalCima;
+    public Transform pontoCastInicialBaixo;
+    public Transform pontoCastFinalBaixo;
     public bool hasCollisionInCastWithObstaculo = false;
+    public bool hasCollisionInCastWithObstaculoBaixo = false;
     public bool hasCollisionInCastWithPlayer = false;
+    public bool hasCollisionInCastWithLimiteCamera = false;
 
 
     void Start(){
@@ -65,7 +73,8 @@ public class EnemyBot : MonoBehaviour {
         //Random dash
         randomValue = Random.Range(0, 10);
         randomValue2 = Random.Range(0, 500);
-        if (randomValue2 == 5) {
+        if (randomValue2 == 5)
+        {
             Dash(new Vector2 (Random.Range(-1f,1f), Random.Range(-1f, 1f)));
         }
         // Dash(new Vector2 (Random.Range(-1f,1f), Random.Range(-1f, 1f)));
@@ -76,28 +85,40 @@ public class EnemyBot : MonoBehaviour {
 
         RayCasting();
 
-
-        if (hasCollisionInCastWithObstaculo)
+        if (dead == false)
         {
-            enemyFly();
+            if (hasCollisionInCastWithObstaculo || hasCollisionInCastWithObstaculoBaixo)
+            {
+                enemyFly();
+            }
+            if (hasCollisionInCastWithPlayer && randomValue == 5)
+            {
+                Dash(new Vector2(1, 0));
+            }
+            if (hasCollisionInCastWithLimiteCamera)
+            {
+                Dash(new Vector2(-1, 0));
+            }
         }
-        if (hasCollisionInCastWithPlayer && randomValue == 5)
-        {
-            Dash(new Vector2(1, 0));
-        }
+        
     }
 
     void RayCasting()
     {
         //RaycastHit2D hit;
-        Debug.DrawLine(pontoCastMeioInicial.position, pontoCastMeioFinal.position, Color.red);
+        Debug.DrawLine(pontoCastInicialDir.position, pontoCastFinalDir.position, Color.red);
+        Debug.DrawLine(pontoCastInicialEsq.position, pontoCastFinalEsq.position, Color.red);
+        Debug.DrawLine(pontoCastInicialCima.position, pontoCastFinalCima.position, Color.red);
+        Debug.DrawLine(pontoCastInicialBaixo.position, pontoCastFinalBaixo.position, Color.red);
 
         //hasCollisionInCast = Physics2D.Linecast (pontoCastMeioInicial.position, pontoCastMeioFinal.position, 
         //                                     1 << LayerMask.NameToLayer("bloco"));
         //hit = Physics2D.Raycast(pontoCastMeioInicial.position, pontoCastMeioFinal.position);
 
-        hasCollisionInCastWithObstaculo = Physics2D.Linecast(pontoCastMeioInicial.position, pontoCastMeioFinal.position, 1 << LayerMask.NameToLayer("Obstaculo"));
-        hasCollisionInCastWithPlayer = Physics2D.Linecast(pontoCastMeioInicial.position, pontoCastMeioFinal.position, 1 << LayerMask.NameToLayer("Player"));
+        hasCollisionInCastWithObstaculo = Physics2D.Linecast(pontoCastInicialDir.position, pontoCastFinalDir.position, 1 << LayerMask.NameToLayer("Obstaculo"));
+        hasCollisionInCastWithObstaculoBaixo = Physics2D.Linecast(pontoCastInicialBaixo.position, pontoCastFinalBaixo.position, 1 << LayerMask.NameToLayer("Obstaculo"));
+        hasCollisionInCastWithPlayer = Physics2D.Linecast(pontoCastInicialDir.position, pontoCastFinalDir.position, 1 << LayerMask.NameToLayer("Player"));
+        hasCollisionInCastWithLimiteCamera = Physics2D.Linecast(pontoCastInicialDir.position, pontoCastFinalDir.position, 1 << LayerMask.NameToLayer("LimiteCamera"));
     }
 
 
