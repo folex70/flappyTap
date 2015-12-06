@@ -11,26 +11,34 @@ public class EnemyBot : MonoBehaviour {
 	public Animator anim;
 	public GameObject coracaoPrefab;
 	public Vector3 direcao ;
-	public float force = 200;
+	public float force = 250;
 	//-------------
 	private GameObject enemy;
 	private Rigidbody2D enemyBody;
 	//-------------
 	private GameObject spawnerBottom;
-	//-------------
-	public float speed;
+    private GameObject player;
+    private Rigidbody2D playerBody;
+    //-------------
+    public float speed;
     //-------------
     //audio
     AudioSource audio;
     public AudioClip AudioDamage;
     public AudioClip AudioDie;
-    
+    public AudioClip AudioDash;
+    //-------------
+    public Vector2 direction;
+    public int randomValue;
+
 
     void Start(){
 
 		enemy = GameObject.FindGameObjectWithTag("Enemy_bot");
-		spawnerBottom = GameObject.FindGameObjectWithTag("spawn_bottom");
+        player = GameObject.FindGameObjectWithTag("Player");
+        spawnerBottom = GameObject.FindGameObjectWithTag("spawn_bottom");
 		enemyBody = enemy.GetComponent<Rigidbody2D> ();
+        playerBody = player.GetComponent<Rigidbody2D>();
         audio = GetComponent<AudioSource>();
     }
 
@@ -42,14 +50,36 @@ public class EnemyBot : MonoBehaviour {
 
 		if (enemyBody.position.y < spawnerBottom.transform.position.y && dead == false) 
 		{
-			enemyBody.AddForce(Vector2.up * force);
-		}
+            enemyFly();
+        }
 
 		enemyBody.rotation = 0f;
-	}
+
+        //Random dash
+        randomValue = Random.Range(0, 500);
+        if (randomValue == 5) {
+            Dash(new Vector2 (Random.Range(-1f,1f), Random.Range(-1f, 1f)));
+        }
+        // Dash(new Vector2 (Random.Range(-1f,1f), Random.Range(-1f, 1f)));
+        //Dash(new Vector2(0, 1));
+        //Dash(new Vector2(1, 0)); 
+        //Dash(new Vector2(1, -1));
+        //Dash(new Vector2(-1, 1));
+
+    }
 
 
-	void OnCollisionEnter2D(Collision2D coll) 
+    private void enemyFly()
+    {
+        if (enemyBody.velocity.y > 0)
+        {
+            enemyBody.velocity = new Vector2(enemyBody.velocity.x, 0);
+        }
+        enemyBody.AddForce(Vector2.up * force);
+    }
+
+
+    void OnCollisionEnter2D(Collision2D coll) 
 	{
 		if (coll.gameObject.tag == "walls") 
 		{
@@ -78,16 +108,26 @@ public class EnemyBot : MonoBehaviour {
         audio.PlayOneShot(AudioDamage, 0.7F);
 
         dropCoracao();
-		
-		if (CurrentLife == 0) {
+
+        if (CurrentLife == 0) {
             audio.PlayOneShot(AudioDie, 0.7F);
             anim.Play("Enemy_die");
-           
             dead = true;
             // enemy.SetActive(false);
         }
 	}
 
+    //Exemplos: dash para direita(1,0)  dash esquerda(-1,0) dash baixo(0,-1) dash cima(0,1)
+    public void Dash(Vector2 direction)
+    {
+        audio.PlayOneShot(AudioDash, 0.7F);
+        //direction = new Vector2 (player.transform.position.x,player.transform.position.y);
+        if (direction.x > 1)
+        {
+            direction = direction.normalized;
+        }
+        enemyBody.position = enemyBody.position + direction * 2;
+    }
 
 	void dropCoracao()
 	{
