@@ -40,7 +40,7 @@ public class EnemyBot : MonoBehaviour {
 		enemyVel.x = speed;
 		enemyBody.velocity = enemyVel;
 
-		if (enemyBody.position.y < spawnerBottom.transform.position.y) 
+		if (enemyBody.position.y < spawnerBottom.transform.position.y && dead == false) 
 		{
 			enemyBody.AddForce(Vector2.up * force);
 		}
@@ -55,7 +55,8 @@ public class EnemyBot : MonoBehaviour {
 		{
 			if(dead)
 			{
-				enemy.SetActive(false);
+                audio.PlayOneShot(AudioDie, 0.7F);
+                enemy.SetActive(false);
 			}
 			else
 			{
@@ -79,10 +80,12 @@ public class EnemyBot : MonoBehaviour {
         dropCoracao();
 		
 		if (CurrentLife == 0) {
-			anim.Play("Enemy_die");
             audio.PlayOneShot(AudioDie, 0.7F);
+            anim.Play("Enemy_die");
+           
             dead = true;
-		}
+            // enemy.SetActive(false);
+        }
 	}
 
 
