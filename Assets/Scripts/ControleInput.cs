@@ -187,21 +187,19 @@ public class ControleInput : MonoBehaviour {
 				esquerda_touch();
 			}
 		}
-		if (Input.touchCount > 0 && Input.GetTouch (0).phase == TouchPhase.Moved) 
+		if (Input.touchCount > 0 && Input.GetTouch (0).phase == TouchPhase.Ended) 
 		{
-			Vector3 wp = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
+			Vector3 wp = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 			Vector2 touchPosUp = new Vector2(wp.x, wp.y);
-
-			if(Vector2.Distance(touchPos, touchPosUp) > 4)
-				return;
-
-			isEsquerda = ! (touchPos.x > touchPosUp.x);
-			flipPersonagem();
-			playerBody.velocity = isEsquerda ? calculaVelocidadeEsquerda() : calculaVelocidadeDireita();
-			
-			Vector2 dir = touchPosUp - playerBody.position;
-			dir = dir.normalized;
-			playerBody.position = playerBody.position + dir * 2;
+			if(Vector2.Distance(touchPos,touchPosUp) > 4){
+				isEsquerda = ! (touchPos.x > touchPosUp.x);
+				flipPersonagem();
+				playerBody.velocity = isEsquerda ? calculaVelocidadeEsquerda() : calculaVelocidadeDireita();
+				
+				Vector2 dir = touchPosUp - playerBody.position;
+				dir = dir.normalized;
+				playerBody.position = playerBody.position + dir * 2;
+			}
 
 		}
 	}

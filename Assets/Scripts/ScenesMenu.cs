@@ -34,14 +34,26 @@ public class ScenesMenu : MonoBehaviour {
 		textHiScore.text = "HI SCORE "+ Manager.instance.GetHiScore();
 	}
 
-	void SetPanelVisivel(bool invisible)
+	void SetPanelVisivel(bool visible)
 	{
-		foreach (Component b in componentesDeTela)
-		{
-			Debug.Log(b.name);
-			GameObject c = ((CanvasRenderer)b).gameObject;
-			c.SetActive(invisible);
+		if (visible) {
+			trySaveHiScore();
 		}
 
+		foreach (Component b in componentesDeTela)
+		{
+			GameObject c = ((CanvasRenderer)b).gameObject;
+			c.SetActive(visible);
+		}
+
+	}
+
+	public void trySaveHiScore()
+	{
+		if (Manager.instance.GetScore() > Manager.instance.GetHiScore ()) 
+		{
+			Manager.instance.SetHiScore(Manager.instance.GetScore());
+			Manager.instance.Save();
+		}
 	}
 }
