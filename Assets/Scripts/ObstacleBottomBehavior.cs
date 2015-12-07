@@ -23,7 +23,7 @@ public class ObstacleBottomBehavior : MonoBehaviour {
         obstaculoYStartValue = transform.position.y;
         spawnerBottom = GameObject.FindGameObjectWithTag("spawn_bottom");
         limitBottom = GameObject.FindGameObjectWithTag("LimiteCameraBottom");
-        Random1 = Random.Range(1, 10);
+        
 
     }
 
@@ -31,8 +31,18 @@ public class ObstacleBottomBehavior : MonoBehaviour {
     {
         
         localLevel = Manager.instance.GetLevel();
-        
-        if (localLevel >= 10 && Random1 == 5)
+
+        if(localLevel >= 10 &&  Random1 == 5 ||
+          (localLevel >= 15 && (Random1 == 5 || Random1 == 10)) ||
+          (localLevel >= 20 && (Random1 == 1 || Random1 == 5 || Random1 == 10)) ||
+          (localLevel >= 25 && (Random1 == 1 || Random1 == 2 || Random1 == 5 || Random1 == 10)) ||
+          (localLevel >= 30 && (Random1 == 1 || Random1 == 2 || Random1 == 3 || Random1 == 5 || Random1 == 10)) ||
+          (localLevel >= 35 && (Random1 == 1 || Random1 == 2 || Random1 == 3 || Random1 == 4 || Random1 == 5 || Random1 == 10)) ||
+          (localLevel >= 40 && (Random1 == 1 || Random1 == 2 || Random1 == 3 || Random1 == 4 || Random1 == 5 || Random1 == 6 || Random1 == 10)) ||
+          (localLevel >= 45 && (Random1 == 1 || Random1 == 2 || Random1 == 3 || Random1 == 4 || Random1 == 5 || Random1 == 6 || Random1 == 7 || Random1 == 10)) ||
+          (localLevel >= 50 && (Random1 == 1 || Random1 == 2 || Random1 == 3 || Random1 == 4 || Random1 == 5 || Random1 == 6 || Random1 == 7 || Random1 == 8 || Random1 == 10)) ||
+          (localLevel >= 55)
+          )
         {
             //faz os obstaculos se moverem verticalmente para aumentar a dificuldade
             
@@ -68,6 +78,7 @@ public class ObstacleBottomBehavior : MonoBehaviour {
 
     void OnEnable()
 	{
+        Random1 = Random.Range(1, 10);
         valorXBottom = GameObject.FindWithTag("spawn_bottom").transform.position.x;
         valorYBottom = GameObject.FindWithTag("spawn_bottom").transform.position.y;
 		valorY = valorYBottom - range * Random.Range (0.1f, 0.4f);

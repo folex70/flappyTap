@@ -18,7 +18,7 @@ public class EnemyBot : MonoBehaviour {
 	//-------------
 	private GameObject spawnerBottom;
     private GameObject player;
-    private Rigidbody2D playerBody;
+    //private Rigidbody2D playerBody;
     //-------------
     public float speed =3;
     //-------------
@@ -58,7 +58,7 @@ public class EnemyBot : MonoBehaviour {
         player = GameObject.FindGameObjectWithTag("Player");
         spawnerBottom = GameObject.FindGameObjectWithTag("spawn_bottom");
 		enemyBody = enemy.GetComponent<Rigidbody2D> ();
-        playerBody = player.GetComponent<Rigidbody2D>();
+        //playerBody = player.GetComponent<Rigidbody2D>();
         audio = GetComponent<AudioSource>();
     }
 

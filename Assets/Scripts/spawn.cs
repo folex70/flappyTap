@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class spawn : MonoBehaviour {
 
 
-	int score = 0;
+	//int score = 0;
     int localLevel = 0;
     public Text textLevel;
     
