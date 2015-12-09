@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 38448872073592e438a5c92c097edda6
-timeCreated: 1447728786
+timeCreated: 1449072486
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -9,6 +9,7 @@ TextureImporter:
     21300004: heart_2
     21300006: heart_3
     21300008: heart_4
+    21300010: heart_5
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -58,50 +59,60 @@ TextureImporter:
     - name: heart_0
       rect:
         serializedVersion: 2
-        x: 7
-        y: 243
-        width: 278
-        height: 48
+        x: 9
+        y: 354
+        width: 342
+        height: 56
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: heart_1
       rect:
         serializedVersion: 2
-        x: 5
-        y: 177
-        width: 280
-        height: 53
+        x: 8
+        y: 265
+        width: 343
+        height: 67
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: heart_2
       rect:
         serializedVersion: 2
-        x: 9
-        y: 116
-        width: 274
-        height: 50
+        x: 8
+        y: 192
+        width: 343
+        height: 62
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: heart_3
       rect:
         serializedVersion: 2
-        x: 9
-        y: 64
-        width: 277
-        height: 47
+        x: 8
+        y: 125
+        width: 344
+        height: 61
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: heart_4
       rect:
         serializedVersion: 2
-        x: 6
-        y: 17
-        width: 282
-        height: 42
+        x: 9
+        y: 67
+        width: 343
+        height: 54
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: heart_5
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 6
+        width: 344
+        height: 57
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}

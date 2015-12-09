@@ -40,7 +40,7 @@ public class ObjectPoolColectbles : MonoBehaviour {
 				return pooledObjectsList[i];
 			}
 		}
-		Debug.Log("vazio");
+
 		
 		if (willGrow) 
 		{

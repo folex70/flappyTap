@@ -53,6 +53,11 @@ public class Manager : MonoBehaviour {
 
 		bf.Serialize (file, data);
 		file.Close ();
+
+		if (FbHolder.isLogged) {
+			FbHolder.UpdateScore (_maxScore);
+		}
+
 	}
 
 	public void Load()
@@ -66,6 +71,13 @@ public class Manager : MonoBehaviour {
 
 			_maxScore = data.maxScore;
 
+		}
+
+		if (FbHolder.isLogged) {
+			int fb_score = FbHolder.loadHiScore();
+			if(fb_score > _maxScore){
+				_maxScore = fb_score;
+			}
 		}
 	}
    
