@@ -7,6 +7,7 @@ using System.IO;
 
 public class Manager : MonoBehaviour {
 
+    private int _currentLevel;
     private int _currentScore;
 	private int _maxScore;
 
@@ -22,6 +23,16 @@ public class Manager : MonoBehaviour {
 		{
 			Destroy (gameObject);
 		}
+    }
+
+    public void SetLevel(int num)
+    {
+        _currentLevel = num;
+    }
+
+    public int GetLevel()
+    {
+        return _currentLevel;
     }
 
     public void SetScore(int num)
