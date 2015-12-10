@@ -11,9 +11,10 @@ public class ScenesMenu : MonoBehaviour {
 	public Text textScore;
 	public Text textHiScore;
 	public bool showBannerOneTime = false;
+    public bool destroyBannerOneTime = false;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 	
 		player = GameObject.Find("player");
 
@@ -34,15 +35,22 @@ public class ScenesMenu : MonoBehaviour {
 		{
 			SetPanelVisivel (true);
 			if (!showBannerOneTime) {
-				RequestBanner ();
-			}
+				RequestBanner ("load");
+            }
 
 			showBannerOneTime = true;
-		} 
+            destroyBannerOneTime = false;
+} 
 		else 
 		{
-			showBannerOneTime = false;
-		}
+            if (!destroyBannerOneTime)
+            {
+                RequestBanner("hide");
+            }
+            showBannerOneTime = false;
+            destroyBannerOneTime = true;
+            
+        }
 		textScore.text = "SCORE "+ Manager.instance.GetScore();
 		textHiScore.text = "HI SCORE "+ Manager.instance.GetHiScore();
 	}
@@ -86,9 +94,10 @@ public class ScenesMenu : MonoBehaviour {
 		AdRequest request = new AdRequest.Builder().Build();
 		// Load the interstitial with the request.
 		interstitial.LoadAd(request);
-	}
+        
+    }
 
-	private void RequestBanner()
+	private void RequestBanner(string mode)
 	{
 		#if UNITY_ANDROID
 		string adUnitId = "ca-app-pub-6695715042527152/7647672622";
@@ -103,7 +112,23 @@ public class ScenesMenu : MonoBehaviour {
 		// Create an empty ad request.
 		AdRequest request = new AdRequest.Builder().Build();
 		// Load the banner with the request.
-		bannerView.LoadAd(request);
+		
+        if (mode == "load")
+        {
+            bannerView.LoadAd(request);
+            Debug.Log("load ativado");
+        }
+        else if(mode == "hide")
+        {
+            bannerView.Hide();
+            Debug.Log("hide ativado");
+        }
+        else
+        {
+            bannerView.LoadAd(request);
+        }
+        
+        
 	}
 
  

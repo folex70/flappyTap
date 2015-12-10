@@ -195,7 +195,8 @@ public class ControleInput : MonoBehaviour {
 			Vector3 wp = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 			Vector2 touchPosUp = new Vector2(wp.x, wp.y);
 			if(Vector2.Distance(touchPos,touchPosUp) > 4){
-				isEsquerda = ! (touchPos.x > touchPosUp.x);
+                audio.PlayOneShot(AudioDash, 0.7F);
+                isEsquerda = ! (touchPos.x > touchPosUp.x);
 				flipPersonagem();
 				playerBody.velocity = isEsquerda ? calculaVelocidadeEsquerda() : calculaVelocidadeDireita();
 				
