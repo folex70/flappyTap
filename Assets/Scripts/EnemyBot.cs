@@ -31,6 +31,7 @@ public class EnemyBot : MonoBehaviour {
     public Vector2 direction;
     public int randomValue;
     public int randomValue2;
+	public int randomValue3;
     //-----------------
     //casting
     public Transform pontoCastInicialDir;
@@ -50,7 +51,8 @@ public class EnemyBot : MonoBehaviour {
     public bool hasCollisionInCastWithPlayerBaixo = false;
     public bool hasCollisionInCastWithLimiteCameraDir = false;
     public bool hasCollisionInCastWithLimiteCameraEsq = false;
-
+	//----------------
+	private bool isEsquerda = false;
 
     void Start(){
 
@@ -77,11 +79,34 @@ public class EnemyBot : MonoBehaviour {
 
         //Random dash
         randomValue = Random.Range(0, 50);
-        randomValue2 = Random.Range(0, 500);
+		randomValue2 = Random.Range(0, 500);
+		randomValue3 = Random.Range(0, 200);
         if (randomValue2 == 5)
         {
             Dash(new Vector2 (Random.Range(-1f,1f), Random.Range(-1f, 1f)));
         }
+
+		//random movimentaçao
+		if (randomValue3 == 5 ) 
+		{
+			speed = Random.Range(-1, 3);
+		}
+
+
+		if (speed < 0) 
+		{
+			isEsquerda = true;
+			flipPersonagem ();
+		} 
+		else if(speed == 0)
+		{
+			speed = 3;
+		}
+		else 
+		{
+			isEsquerda = false;
+			flipPersonagem ();
+		}
         // Dash(new Vector2 (Random.Range(-1f,1f), Random.Range(-1f, 1f)));
         //Dash(new Vector2(0, 1));
         //Dash(new Vector2(1, 0)); 
@@ -126,6 +151,7 @@ public class EnemyBot : MonoBehaviour {
             if (hasCollisionInCastWithLimiteCameraEsq)
             {
                 Dash(new Vector2(1, 0));
+				speed = 6;
             }
         }
         
@@ -218,5 +244,12 @@ public class EnemyBot : MonoBehaviour {
 	void dropCoracao()
 	{
 		Instantiate (coracaoPrefab, transform.position, transform.rotation);
+	}
+
+	private void flipPersonagem()
+	{
+		
+		//isEsquerda = !isEsquerda;
+		enemy.transform.localRotation = Quaternion.Euler(0, isEsquerda ? 180 : 0, 0);
 	}
 }

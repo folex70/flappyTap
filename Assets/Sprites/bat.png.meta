@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: a8e56ad7dea3e4f4aae5b5861c3d27e3
-timeCreated: 1447671920
+timeCreated: 1449948645
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -107,8 +107,8 @@ TextureImporter:
         y: 1020
         width: 103
         height: 122
-      alignment: 0
-      pivot: {x: .5, y: .5}
+      alignment: 9
+      pivot: {x: .611694932, y: .164712876}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: bat_3
       rect:
@@ -117,8 +117,8 @@ TextureImporter:
         y: 1046
         width: 110
         height: 84
-      alignment: 0
-      pivot: {x: .5, y: .5}
+      alignment: 9
+      pivot: {x: .581345975, y: .241299585}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: bat_4
       rect:
@@ -157,8 +157,8 @@ TextureImporter:
         y: 809
         width: 117
         height: 112
-      alignment: 0
-      pivot: {x: .5, y: .5}
+      alignment: 9
+      pivot: {x: .66388303, y: .842397988}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: bat_8
       rect:
@@ -183,12 +183,12 @@ TextureImporter:
     - name: bat_10
       rect:
         serializedVersion: 2
-        x: 160
-        y: 628
+        x: 161
+        y: 623
         width: 103
         height: 121
-      alignment: 0
-      pivot: {x: .5, y: .5}
+      alignment: 9
+      pivot: {x: .574462891, y: .161941901}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: bat_11
       rect:
@@ -197,8 +197,8 @@ TextureImporter:
         y: 654
         width: 109
         height: 84
-      alignment: 0
-      pivot: {x: .5, y: .5}
+      alignment: 9
+      pivot: {x: .558636606, y: .226082206}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: bat_12
       rect:
@@ -207,8 +207,8 @@ TextureImporter:
         y: 616
         width: 103
         height: 121
-      alignment: 0
-      pivot: {x: .5, y: .5}
+      alignment: 9
+      pivot: {x: .661337256, y: .140813157}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: bat_13
       rect:
@@ -217,8 +217,8 @@ TextureImporter:
         y: 641
         width: 110
         height: 85
-      alignment: 0
-      pivot: {x: .5, y: .5}
+      alignment: 9
+      pivot: {x: .523242176, y: .289459586}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: bat_14
       rect:
@@ -227,8 +227,8 @@ TextureImporter:
         y: 416
         width: 118
         height: 112
-      alignment: 0
-      pivot: {x: .5, y: .5}
+      alignment: 9
+      pivot: {x: .629995167, y: .819571078}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: bat_15
       rect:
@@ -244,7 +244,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 454
-        y: 403
+        y: 404
         width: 73
         height: 152
       alignment: 0
@@ -253,12 +253,12 @@ TextureImporter:
     - name: bat_17
       rect:
         serializedVersion: 2
-        x: 588
-        y: 404
+        x: 592
+        y: 403
         width: 117
         height: 112
-      alignment: 0
-      pivot: {x: .5, y: .5}
+      alignment: 9
+      pivot: {x: .598329186, y: .830984652}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: bat_18
       rect:
@@ -287,8 +287,8 @@ TextureImporter:
         y: 244
         width: 103
         height: 122
-      alignment: 0
-      pivot: {x: .5, y: .5}
+      alignment: 9
+      pivot: {x: .611695051, y: .143757299}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: bat_21
       rect:
@@ -297,8 +297,8 @@ TextureImporter:
         y: 270
         width: 109
         height: 84
-      alignment: 0
-      pivot: {x: .5, y: .5}
+      alignment: 9
+      pivot: {x: .593819141, y: .241299942}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: bat_22
       rect:
@@ -307,8 +307,8 @@ TextureImporter:
         y: 259
         width: 102
         height: 120
-      alignment: 0
-      pivot: {x: .5, y: .5}
+      alignment: 9
+      pivot: {x: .5501284, y: .137819424}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: bat_23
       rect:
@@ -317,8 +317,8 @@ TextureImporter:
         y: 284
         width: 108
         height: 84
-      alignment: 0
-      pivot: {x: .5, y: .5}
+      alignment: 9
+      pivot: {x: .582851291, y: .241300315}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: bat_24
       rect:
@@ -327,8 +327,8 @@ TextureImporter:
         y: 33
         width: 118
         height: 112
-      alignment: 0
-      pivot: {x: .5, y: .5}
+      alignment: 9
+      pivot: {x: .608328998, y: .830984235}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: bat_25
       rect:
@@ -357,8 +357,8 @@ TextureImporter:
         y: 47
         width: 116
         height: 111
-      alignment: 0
-      pivot: {x: .5, y: .5}
+      alignment: 9
+      pivot: {x: .599176884, y: .833966076}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: bat_28
       rect:
