@@ -13,7 +13,7 @@ public class EnemyBot : MonoBehaviour {
 	public Vector3 direcao ;
 	public float force = 250;
 	//-------------
-	private GameObject enemy;
+	//private GameObject enemy;
 	private Rigidbody2D enemyBody;
 	//-------------
 	private GameObject spawnerBottom;
@@ -52,14 +52,14 @@ public class EnemyBot : MonoBehaviour {
     public bool hasCollisionInCastWithLimiteCameraDir = false;
     public bool hasCollisionInCastWithLimiteCameraEsq = false;
 	//----------------
-	private bool isEsquerda = false;
+	public bool isEsquerda = false;
 
     void Start(){
 
-		enemy = GameObject.FindGameObjectWithTag("Enemy_bot");
+		//enemy = GameObject.FindGameObjectWithTag("Enemy_bot"); //referenciar de outra forma
         player = GameObject.FindGameObjectWithTag("Player");
         spawnerBottom = GameObject.FindGameObjectWithTag("spawn_bottom");
-		enemyBody = enemy.GetComponent<Rigidbody2D> ();
+		enemyBody = GetComponent<Rigidbody2D> ();
         //playerBody = player.GetComponent<Rigidbody2D>();
         audio = GetComponent<AudioSource>();
     }
@@ -198,7 +198,7 @@ public class EnemyBot : MonoBehaviour {
 			if(dead)
 			{
                 audio.PlayOneShot(AudioDie, 0.7F);
-                enemy.SetActive(false);
+				gameObject.SetActive(false);
 			}
 			else
 			{
@@ -250,6 +250,6 @@ public class EnemyBot : MonoBehaviour {
 	{
 		
 		//isEsquerda = !isEsquerda;
-		enemy.transform.localRotation = Quaternion.Euler(0, isEsquerda ? 180 : 0, 0);
+		this.gameObject.transform.localRotation = Quaternion.Euler(0, isEsquerda ? 180 : 0, 0);
 	}
 }

@@ -192,7 +192,8 @@ public class ControleInput : MonoBehaviour {
 		}
 		if (Input.touchCount > 0 && Input.GetTouch (0).phase == TouchPhase.Ended) 
 		{
-			Vector3 wp = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+			//Vector3 wp = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+			Vector3 wp = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
 			Vector2 touchPosUp = new Vector2(wp.x, wp.y);
 			if(Vector2.Distance(touchPos,touchPosUp) > 4){
                 audio.PlayOneShot(AudioDash, 0.7F);

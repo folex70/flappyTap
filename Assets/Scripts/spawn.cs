@@ -105,7 +105,7 @@ public class spawn : MonoBehaviour {
         {
             localLevel++;
             CancelInvoke();
-			InvokeRepeating ("SpawnBugs",5f, 5f);
+			InvokeRepeating ("SpawnBugs",2.5f, 2.5f);
             InvokeRepeating("SpawnObstacles", 1f, 1f);
             InvokeRepeating("SpawnObstaclesBottom", 1.5f, 1.5f);
         }
