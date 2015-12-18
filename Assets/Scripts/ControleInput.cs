@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-
+[RequireComponent(typeof(AudioSource))]
 public class ControleInput : MonoBehaviour {
 	
 	public float velocidade;
@@ -20,9 +20,11 @@ public class ControleInput : MonoBehaviour {
 	private Bounds playerBounds;
 	private Vector2 touchPos;
 	public Animator anim;
+    AudioSource audio;
+    public AudioClip AudioDash;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 		//camera = GetComponent.<Camera>;
 		player = GameObject.Find("player");
 
@@ -39,8 +41,8 @@ public class ControleInput : MonoBehaviour {
 		horzExtent = Camera.main.orthographicSize * Screen.width / Screen.height;
 
 		playerBody.velocity =  calculaVelocidadeDireita();
-
-	}
+        audio = GetComponent<AudioSource>();
+    }
 
 	
 	// Update is called once per frame
@@ -159,7 +161,8 @@ public class ControleInput : MonoBehaviour {
 			Vector3 wp = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 			Vector2 touchPosUp = new Vector2(wp.x, wp.y);
 			if(Vector2.Distance(touchPos,touchPosUp) > 4){
-				isEsquerda = ! (touchPos.x > touchPosUp.x);
+                audio.PlayOneShot(AudioDash, 0.7F);
+                isEsquerda = ! (touchPos.x > touchPosUp.x);
 				flipPersonagem();
 				playerBody.velocity = isEsquerda ? calculaVelocidadeEsquerda() : calculaVelocidadeDireita();
 
@@ -189,10 +192,12 @@ public class ControleInput : MonoBehaviour {
 		}
 		if (Input.touchCount > 0 && Input.GetTouch (0).phase == TouchPhase.Ended) 
 		{
-			Vector3 wp = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+			//Vector3 wp = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+			Vector3 wp = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
 			Vector2 touchPosUp = new Vector2(wp.x, wp.y);
 			if(Vector2.Distance(touchPos,touchPosUp) > 4){
-				isEsquerda = ! (touchPos.x > touchPosUp.x);
+                audio.PlayOneShot(AudioDash, 0.7F);
+                isEsquerda = ! (touchPos.x > touchPosUp.x);
 				flipPersonagem();
 				playerBody.velocity = isEsquerda ? calculaVelocidadeEsquerda() : calculaVelocidadeDireita();
 				
