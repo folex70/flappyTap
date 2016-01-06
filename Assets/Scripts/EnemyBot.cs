@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
+//using System;
 using System.Collections;
+
 
 [RequireComponent(typeof(AudioSource))]
 public class EnemyBot : MonoBehaviour {
@@ -29,7 +31,8 @@ public class EnemyBot : MonoBehaviour {
     public AudioClip AudioDash;
     //-------------
     public Vector2 direction;
-    public int randomValue;
+	public int randomValueType;
+	public int randomValue;
     public int randomValue2;
 	public int randomValue3;
     //-----------------
@@ -62,6 +65,8 @@ public class EnemyBot : MonoBehaviour {
 		enemyBody = GetComponent<Rigidbody2D> ();
         //playerBody = player.GetComponent<Rigidbody2D>();
         audio = GetComponent<AudioSource>();
+		randomValueType = Random.Range(3, 5);
+		speed = randomValueType;
     }
 
 	void FixedUpdate()
@@ -81,17 +86,27 @@ public class EnemyBot : MonoBehaviour {
         randomValue = Random.Range(0, 50);
 		randomValue2 = Random.Range(0, 500);
 		randomValue3 = Random.Range(0, 200);
-        if (randomValue2 == 5)
+
+        //random para dash
+		if (randomValue2 == 5)
         {
             Dash(new Vector2 (Random.Range(-1f,1f), Random.Range(-1f, 1f)));
         }
 
-		//random movimentaçao
-		if (randomValue3 == 5 ) 
+		//random direçao
+		if (randomValue3 == 5 && (randomValueType == 5 || 
+		                          randomValueType == 4 || 
+		                          randomValueType == 2)) 
 		{
-			speed = Random.Range(-1, 3);
-		}
+			//speed = Random.Range (-3, 3);
+			if(speed > 0){
+				speed = speed * (-1);
+			}
+			else{
+				speed = Mathf.Abs(speed);
+			}
 
+		}
 
 		if (speed < 0) 
 		{
@@ -146,12 +161,17 @@ public class EnemyBot : MonoBehaviour {
 
             if (hasCollisionInCastWithLimiteCameraDir)
             {
-                Dash(new Vector2(-1, 0));
+				//Dash(new Vector2(-1, 0));
+				speed = speed * (-1);
             }
+
             if (hasCollisionInCastWithLimiteCameraEsq)
             {
-                Dash(new Vector2(1, 0));
-				speed = 6;
+				Debug.Log ("caiu aqui no colisor com o lado esquerdo ");
+				//Dash(new Vector2(1, 0));
+				//speed = Random.Range(3, 6);
+				speed = Mathf.Abs(speed);
+
             }
         }
         
