@@ -182,7 +182,6 @@ public class EnemyBot : MonoBehaviour {
 
             if (hasCollisionInCastWithLimiteCameraEsq)
             {
-				Debug.Log ("caiu aqui no colisor com o lado esquerdo ");
 				//Dash(new Vector2(1, 0));
 				//speed = Random.Range(3, 6);
 				speed = Mathf.Abs(speed);
