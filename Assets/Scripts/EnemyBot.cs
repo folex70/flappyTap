@@ -19,7 +19,7 @@ public class EnemyBot : MonoBehaviour {
 	private Rigidbody2D enemyBody;
 	//-------------
 	private GameObject spawnerBottom;
-    private GameObject player;
+    //private GameObject player;
     //private Rigidbody2D playerBody;
     //-------------
     public float speed =3;
@@ -29,12 +29,15 @@ public class EnemyBot : MonoBehaviour {
     public AudioClip AudioDamage;
     public AudioClip AudioDie;
     public AudioClip AudioDash;
-    //-------------
+    //------------- random
     public Vector2 direction;
 	public int randomValueType;
 	public int randomValue;
     public int randomValue2;
 	public int randomValue3;
+	//----------------- TIMMER
+	public float timeLeftFixed = 5f;
+	public float timeLeft = 3f;
     //-----------------
     //casting
     public Transform pontoCastInicialDir;
@@ -60,7 +63,7 @@ public class EnemyBot : MonoBehaviour {
     void Start(){
 
 		//enemy = GameObject.FindGameObjectWithTag("Enemy_bot"); //referenciar de outra forma
-        player = GameObject.FindGameObjectWithTag("Player");
+        //player = GameObject.FindGameObjectWithTag("Player");
         spawnerBottom = GameObject.FindGameObjectWithTag("spawn_bottom");
 		enemyBody = GetComponent<Rigidbody2D> ();
         //playerBody = player.GetComponent<Rigidbody2D>();
@@ -71,9 +74,9 @@ public class EnemyBot : MonoBehaviour {
 
 	void FixedUpdate()
 	{
-		Vector2 enemyVel = enemyBody.velocity;
-		enemyVel.x = speed;
-		enemyBody.velocity = enemyVel;
+		Vector2 enemyVel 	= enemyBody.velocity;
+		enemyVel.x 		   	= speed;
+		enemyBody.velocity 	= enemyVel;
 
 		if (enemyBody.position.y < spawnerBottom.transform.position.y && dead == false) 
 		{
@@ -127,6 +130,18 @@ public class EnemyBot : MonoBehaviour {
         //Dash(new Vector2(1, 0)); 
         //Dash(new Vector2(1, -1));
         //Dash(new Vector2(-1, 1));
+		//--------------timmer------------
+		timeLeft -= Time.deltaTime;
+		if(timeLeft < 0)
+		{	
+			timeLeft = timeLeftFixed;
+			if(speed <0)
+			{
+				speed = Mathf.Abs(speed);
+
+			}
+		}
+		//--------------------------------
 
         RayCasting();
 

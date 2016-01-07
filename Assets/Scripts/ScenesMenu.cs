@@ -88,22 +88,21 @@ public class ScenesMenu : MonoBehaviour {
 			showBannerOneTime = true;
 			destroyBannerOneTime = false;
 		} 
-		else 
-		{
-			if (!destroyBannerOneTime)
-			{
+		//else 
+		//{
+		//	if (!destroyBannerOneTime)
+		//	{
 				//RequestBanner("hide");
-				if(criouBanner == true){
-					bannerView.Hide();
-					bannerView.Destroy();
-					Debug.Log ("aa");
-				}
+				//if(criouBanner == true){
+					//bannerView.Hide();
+					//bannerView.Destroy();
+				//}
 
-			}
+		//	}
 			showBannerOneTime = false;
 			destroyBannerOneTime = true;
 			
-		}
+		//}
 		textScore.text = "SCORE "+ Manager.instance.GetScore();
 		textHiScore.text = "HI SCORE "+ Manager.instance.GetHiScore();
 	}
