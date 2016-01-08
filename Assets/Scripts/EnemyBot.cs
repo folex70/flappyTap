@@ -35,7 +35,7 @@ public class EnemyBot : MonoBehaviour {
 	public int randomValue;
     public int randomValue2;
 	public int randomValue3;
-	//----------------- TIMMER
+	//----------------- TIMER
 	public float timeLeftFixed = 5f;
 	public float timeLeft = 3f;
     //-----------------
@@ -130,7 +130,7 @@ public class EnemyBot : MonoBehaviour {
         //Dash(new Vector2(1, 0)); 
         //Dash(new Vector2(1, -1));
         //Dash(new Vector2(-1, 1));
-		//--------------timmer------------
+		//--------------timer------------
 		timeLeft -= Time.deltaTime;
 		if(timeLeft < 0)
 		{	

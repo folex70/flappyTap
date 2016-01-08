@@ -32,7 +32,8 @@ public class ControleInput : MonoBehaviour {
 		// Recupera rigidbody do player
 		playerBody = player.GetComponent<Rigidbody2D> ();
 
-		playerBounds = player.GetComponent<BoxCollider2D>().bounds;
+		//playerBounds = player.GetComponent<BoxCollider2D>().bounds;
+		playerBounds = player.GetComponent<CircleCollider2D>().bounds;
 
 		playerClass = player.GetComponent<Player>();
 

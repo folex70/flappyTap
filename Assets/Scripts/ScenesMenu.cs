@@ -88,8 +88,8 @@ public class ScenesMenu : MonoBehaviour {
 			showBannerOneTime = true;
 			destroyBannerOneTime = false;
 		} 
-		//else 
-		//{
+		else 
+		{
 		//	if (!destroyBannerOneTime)
 		//	{
 				//RequestBanner("hide");
@@ -102,7 +102,7 @@ public class ScenesMenu : MonoBehaviour {
 			showBannerOneTime = false;
 			destroyBannerOneTime = true;
 			
-		//}
+		}
 		textScore.text = "SCORE "+ Manager.instance.GetScore();
 		textHiScore.text = "HI SCORE "+ Manager.instance.GetHiScore();
 	}
