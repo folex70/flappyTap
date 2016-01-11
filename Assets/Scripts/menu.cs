@@ -16,10 +16,13 @@ public class menu : MonoBehaviour {
 		Application.LoadLevel ("menu");
 	}
 
+	public void credits () {
+		Application.LoadLevel ("credits");
+	}
+
 	public void exit()
 	{
 		Application.Quit ();
 	}
-
 
 }

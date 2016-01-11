@@ -61,7 +61,9 @@ public class ScenesMenu : MonoBehaviour {
 		SetPanelVisivel (false);
 		
 		Manager.instance.Load();
-		
+
+		RequestBanner ();
+		bannerView.Hide();
 	}
 
 	public static string OutputMessage

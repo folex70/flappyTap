@@ -1,11 +1,12 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\ControleInput.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\FbHolder.cs">
     <Files>
-      <File FileName="Assets\Scripts\EnemyBot.cs" Line="264" Column="3" />
+      <File FileName="Assets\Scripts\EnemyBot.cs" Line="133" Column="36" />
       <File FileName="Assets\Scripts\menu.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\ScenesMenu.cs" Line="170" Column="46" />
-      <File FileName="Assets\Scripts\ControleInput.cs" Line="53" Column="4" />
+      <File FileName="Assets\Scripts\ScenesMenu.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\ControleInput.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\FbHolder.cs" Line="82" Column="4" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -29,6 +29,9 @@ public class FbHolder : MonoBehaviour {
 			ReconfiguraElementos ();
 		}
 
+
+		DontDestroyOnLoad(loggedElements);
+
 	}
 
 	void SetInit()
@@ -74,8 +77,12 @@ public class FbHolder : MonoBehaviour {
 
 	void ReconfiguraElementos ()
 	{
-		loggedElements.SetActive (isLogged);
-		notLoggedElements.SetActive (!isLogged);
+		if (loggedElements != null) {
+			loggedElements.SetActive (isLogged);
+		}
+		if (notLoggedElements != null) {
+			notLoggedElements.SetActive (!isLogged);
+		}
 	}
 
 	void configuraPerfil ()

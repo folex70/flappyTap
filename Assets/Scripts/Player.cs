@@ -63,8 +63,7 @@ public class Player : MonoBehaviour {
 
 	void OnBecameInvisible() {
 		GameOver ();
-	}
-	
+	}	
 
 	public void takeDamage(int damage)	{
 		CurrentLife = CurrentLife - damage;
