@@ -61,7 +61,9 @@ public class EnemyBot : MonoBehaviour {
 	public bool isEsquerda = false;
 
     void Start(){
-
+		//anim.SetBool("takeHit",false);
+		anim.SetBool("isDead",false);
+		//------------
 		//enemy = GameObject.FindGameObjectWithTag("Enemy_bot"); //referenciar de outra forma
         //player = GameObject.FindGameObjectWithTag("Player");
         spawnerBottom = GameObject.FindGameObjectWithTag("spawn_bottom");
@@ -74,6 +76,8 @@ public class EnemyBot : MonoBehaviour {
 
 	void FixedUpdate()
 	{
+		//anim.SetBool("takeHit",false);
+		//---------------------------------
 		Vector2 enemyVel 	= enemyBody.velocity;
 		enemyVel.x 		   	= speed;
 		enemyBody.velocity 	= enemyVel;
@@ -250,14 +254,16 @@ public class EnemyBot : MonoBehaviour {
 	public void takeDamage(int damage)	
 	{
 		CurrentLife = CurrentLife - damage;
-		anim.Play("Enemy_hit");
+		//anim.Play("Enemy_hit");
+		anim.SetTrigger("takeHit");
         audio.PlayOneShot(AudioDamage, 0.7F);
 
         dropCoracao();
 
         if (CurrentLife == 0) {
             audio.PlayOneShot(AudioDie, 0.7F);
-            anim.Play("Enemy_die");
+            //anim.Play("Enemy_die");
+			anim.SetBool("isDead",true);
             dead = true;
             // enemy.SetActive(false);
         }
